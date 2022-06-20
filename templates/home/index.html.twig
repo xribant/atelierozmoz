@@ -1,0 +1,565 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+ <!-- slider section -->
+    <section class=" slider_section position-relative">
+
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">01</li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1">02</li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-3 offset-md-2">
+                <div class="slider_detail">
+                  <h1>
+                    ATELIERS &
+                    <span>
+                      FORMATIONS
+                    </span>
+                  </h1>
+                  <p>
+                   Ôzmoz, l'art de se créer, ce sont des formations, des stages, des ateliers pour les adultes, les ados et les enfants. 
+                  </p>
+                  <div>
+                    <a href="">
+                      En savoir plus
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="slider_img-box">
+                  <img src="{{ asset('build/ozmoz_logo_white.png') }}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-3 offset-md-2">
+                <div class="slider_detail">
+                  <h1>
+                    NEWS
+                    <span>
+                      LETTER
+                    </span>
+                  </h1>
+                  <p>
+                    Inscrivez-vous pour recevoir les dernières infos sur les ateliers et évènements.
+                  </p>
+                  <div>
+                    <a href="#newsletter">
+                      Je m'inscris
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="slider_img-box">
+                  <img src="{{ asset('build/newsletter.png') }}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel_btn-container">
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- end slider section -->
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container">
+      <h2>
+        À PROPOS
+      </h2>
+      <p>
+        Institutrice, animatrice certifiée au journal créatif®, au carnet de deuil®, à la science du bonheur et coach certifiée en psychologie positive et scolaire,  je vous propose une palette d'ateliers pour prendre soin de vous, de vos pensées, de vos émotions afin de (re)trouver un équilibre intérieur.
+      </p>
+      <p>
+        Ôzmoz intervient également au sein de votre école, structure d'accueil ou entreprise. 
+      </p>
+      <p>
+        Nous vous proposons également des fêtes hautes en couleur, testées et approuvées par les enfants, ados et adultes! De l'ambiance, de la créativité,...
+      </p>
+    </div>
+
+  </section>
+
+  <!-- end about section -->
+
+
+
+  <!-- portfolio section -->
+  <section class="portfolio_section layout_padding2">
+    <div class="container">
+      <h2>
+        RÉALISATIONS
+      </h2>
+      <p>
+        Ôzmoz propose des ateliers riches et variés tout au long de l'année tant pour les adultes, que pour les ados et les enfants.
+        N'hésitez pas à parcourir l'ensemble de nos propositions qui s'enrichiront et évolueront au fil du temps.
+      </p>
+    </div>
+    <div class="container layout_padding2-top ">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="portfolio_img-box">
+            <img src="{{ asset('build/ozmoz-portfolio-5.png') }}" alt="">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="portfolio_img-box">
+            <img src="{{ asset('build/ozmoz-portfolio-1.png') }}" alt="">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="portfolio_img-box">
+            <img src="{{ asset('build/ozmoz-portfolio-2.png') }}" alt="">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="portfolio_img-box">
+            <img src="{{ asset('build/ozmoz-portfolio-4.png') }}" alt="">
+          </div>
+        </div>
+         <div class="col-md-12">
+          <div class="portfolio_img-box">
+            <img src="{{ asset('build/ozmoz-portfolio-3.png') }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end portfolio section -->
+
+
+  <!-- team section  -->
+  <section class="team_section layout_padding">
+    <div class="container">
+      <h2>
+        OUR TEAM
+      </h2>
+      <p>
+        It is a long established fact that a reader will be distracted by the readable
+      </p>
+    </div>
+    <div class="container">
+      <div class="team_card-container layout_padding2">
+        <div class="team_card">
+          <div class="team_img-box">
+            <img src="images/team-1.png" alt="">
+          </div>
+          <div class="team_detail-box">
+            <h5>
+              JOHN DOE
+            </h5>
+            <p>
+              CEO - DESIGNER
+            </p>
+            <div class="team_follow">
+              <h6>
+                Follow On
+              </h6>
+              <div class="team_social">
+                <div>
+                  <a href="">
+                    <img src="images/facebook-logo-button.png" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img src=" images/twitter-logo-button.png" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="images/linkedin.png" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="images/instagram.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team_card">
+          <div class="team_img-box">
+            <img src="images/team-2.png" alt="">
+          </div>
+          <div class="team_detail-box">
+            <h5>
+              sandy DOE
+            </h5>
+            <p>
+              CEO - DESIGNER
+            </p>
+            <div class="team_follow">
+              <h6>
+                Follow On
+              </h6>
+              <div class="team_social">
+                <div>
+                  <a href="">
+                    <img src="images/facebook-logo-button.png" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img src=" images/twitter-logo-button.png" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="images/linkedin.png" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="images/instagram.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team_card">
+          <div class="team_img-box">
+            <img src="images/team-3.png" alt="">
+          </div>
+          <div class="team_detail-box">
+            <h5>
+              Alexi DOE
+            </h5>
+            <p>
+              CEO - DESIGNER
+            </p>
+            <div class="team_follow">
+              <h6>
+                Follow On
+              </h6>
+              <div class="team_social">
+                <div>
+                  <a href="">
+                    <img src="images/facebook-logo-button.png" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img src=" images/twitter-logo-button.png" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="images/linkedin.png" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="images/instagram.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team_card">
+          <div class="team_img-box">
+            <img src="images/team-4.png" alt="">
+          </div>
+          <div class="team_detail-box">
+            <h5>
+              JOHN DOE
+            </h5>
+            <p>
+              CEO - DESIGNER
+            </p>
+            <div class="team_follow">
+              <h6>
+                Follow On
+              </h6>
+              <div class="team_social">
+                <div>
+                  <a href="https://www.facebook.com/Ozmoz.be" target="_blank">
+                    <img src="{{ asset('build/facebook-logo-button.png') }}" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="https://www.pinterest.com/bailsab/_created/" target="_blank">
+                    <img src="{{ asset('build/pinterest.png') }}" alt="">
+                  </a>
+                </div>
+                <div>
+                  <a href="https://www.instagram.com/ozmoz_lart_de_se_creer/?hl=fr" target="_blank">
+                    <img src="images/instagram.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- end team section -->
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <p>
+        Don’t Hesitate To Ask
+      </p>
+      <h2 class="">
+        FREE CONSULTATION
+      </h2>
+    </div>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-6 ">
+          <form action="">
+            <div class="contact_form-container">
+              <div>
+                <div>
+                  <label>
+                    Name
+                    <input type="text" />
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    Email
+                    <input type="email" />
+                  </label>
+                </div>
+
+                <div>
+                  <label>
+                    Phone Number
+                    <input type="text" />
+                  </label>
+                </div>
+
+                <div>
+                  <label>
+                    Message
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                  </label>
+                </div>
+                <div class="mt-5">
+                  <button type="submit">
+                    Send
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="contact_img-box">
+            <img src="images/form-img.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+   <!-- client section -->
+  <section class="client_section layout_padding">
+    <h2 class="">
+      Ce qu'ils en disent...
+    </h2>
+    <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <div class="row">
+                      <div class="col-md-3">
+                        <div class="client_img-box">
+                          <img src="{{ asset('build/smile.png') }}" alt="">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="client_detail-box">
+                          <h5>
+                            Alex Du
+                          </h5>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="row">
+                      <div class="col-md-3">
+                        <div class="client_img-box">
+                          <img src="{{ asset('build/client.png') }}" alt="">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="client_detail-box">
+                          <h5>
+                            Alex Du
+                          </h5>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="row">
+                      <div class="col-md-3">
+                        <div class="client_img-box">
+                          <img src="{{ asset('build/client.png') }}" alt="">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="client_detail-box">
+                          <h5>
+                            Alex Du
+                          </h5>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+     
+    </div>
+  </section>
+
+
+  <!-- end client section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding">
+    <div class="container info_content">
+      <div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6 contactUs">
+                <h5>
+                  A Propos
+                </h5>
+                <ul>
+                  <li>
+                      Institutrice, animatrice certifiée au journal créatif®, au carnet de deuil®, à la science du bonheur et coach certifiée en psychologie positive et scolaire,  je vous propose une palette d'ateliers pour prendre soin de vous, de vos pensées, de vos émotions afin de (re)trouver un équilibre intérieur.
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6 contactUs">
+                <h5>
+                  Contact
+                </h5>
+                <ul>
+                  <li>
+                      <span class="brand">Ôzmoz | Sabrina Bailliez</span>
+                  </li>
+                  <li>
+                      40 Rue des Tilleuls<br>
+                      1435 Hévillers<br>
+                      (Mont-Saint-Guibert)
+                    </a>
+                  </li>
+                  <li>
+                      0475 62 40 64
+                  </li>
+                  <li>
+                    <a href="{{ path('home') }}" target="_blank">
+                      www.atelierozmoz.be
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:info@atelierozmoz.be">
+                      info@atelierozmoz.be
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <div id="newsletter" class="form_container mt-5">
+              <h5>
+                NEWSLETTER
+              </h5>
+              <form action="">
+                <input type="email" placeholder="Entrez votre adresse e-mail" />
+                <button type="submit">
+                  S'inscrire
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info_img-box">
+              <img src="{{ asset('build/about.png') }}" alt="">
+            </div>
+            <div class="d-flex justify-content-end pr-5">
+              <div class="social-box">
+                <a href="https://www.facebook.com/Ozmoz.be" target="_blank">
+                  <img src="{{ asset('build/fb.png') }}" alt="" />
+                </a>
+                <a href="https://www.pinterest.com/bailsab/_created/" target="_blank">
+                  <img src="{{ asset('build/pinterest.png') }}" alt="" />
+                </a>
+                <a href="https://www.instagram.com/ozmoz_lart_de_se_creer/?hl=fr" target="_blank">
+                  <img src="{{ asset('build/instagram1.png') }}" alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+{% endblock %}
