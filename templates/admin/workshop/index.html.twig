@@ -1,43 +1,58 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/admin_base.html.twig' %}
 
-{% block title %}Workshop index{% endblock %}
+{% block title %}Ateliers{% endblock %}
 
-{% block body %}
-    <h1>Workshop index</h1>
+{% block pageTitle %}Gestion des ateliers{% endblock %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Slug</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for workshop in workshops %}
-            <tr>
-                <td>{{ workshop.id }}</td>
-                <td>{{ workshop.title }}</td>
-                <td>{{ workshop.description }}</td>
-                <td>{{ workshop.slug }}</td>
-                <td>{{ workshop.createdAt ? workshop.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ workshop.updatedAt ? workshop.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_workshop_show', {'id': workshop.id}) }}">show</a>
-                    <a href="{{ path('app_workshop_edit', {'id': workshop.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_workshop_new') }}">Create new</a>
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="toolbar">
+                                <!--Here you can write extra buttons/actions for the toolbar-->
+                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_workshop_new') }}">Créer un atelier</a>
+                            </div>
+                            <table id="adminUsers-table" class="table">
+                                <thead>
+                                    <th>#</th>
+                                    <th>Titre</th>
+                                    <th>Création</th>
+                                    <th>Modifié le</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                {% for workshop in workshops %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ workshop.title }}</td>
+                                    <td>{{ workshop.createdAt ? workshop.createdAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                                    <td>{{ workshop.updatedAt ? workshop.updatedAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                                    <td>
+                                        <div>
+                                                <a rel="tooltip" title="Modifier" class="btn btn-simple btn-warning btn-icon" href="{{ path('app_workshop_edit', {'uid': workshop.uid}) }}">
+                                                    <i class="ti-pencil-alt"></i>
+                                                </a>
+                                                <form style="display: inline-block;" method="post" action="{{ path('app_workshop_delete', {'uid': workshop.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cet atelier?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ workshop.uid) }}">
+                                                    <button rel="tooltip" title="Supprimer" class="btn btn-simple btn-danger btn-icon"><i class="ti-close"></i></button>
+                                                </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">Pas d'ateliers</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!--  end card  -->
+                </div> <!-- end col-md-12 -->
+            </div> <!-- end row -->
+        </div>
+    </div>
 {% endblock %}

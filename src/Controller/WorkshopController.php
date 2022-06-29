@@ -18,6 +18,7 @@ class WorkshopController extends AbstractController
     {
         return $this->render('admin/workshop/index.html.twig', [
             'workshops' => $workshopRepository->findAll(),
+            'active_menu' => 'ateliers'
         ]);
     }
 
@@ -38,6 +39,7 @@ class WorkshopController extends AbstractController
         return $this->renderForm('admin/workshop/new.html.twig', [
             'workshop' => $workshop,
             'form' => $form,
+            'active_menu' => 'ateliers'
         ]);
     }
 
@@ -56,6 +58,7 @@ class WorkshopController extends AbstractController
         return $this->renderForm('admin/workshop/edit.html.twig', [
             'workshop' => $workshop,
             'form' => $form,
+            'active_menu' => 'ateliers'
         ]);
     }
 
