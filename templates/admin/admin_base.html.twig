@@ -91,7 +91,12 @@
 	                        <p>Utilisateurs</p>
 	                    </a>
 	                </li>
-
+					<li {% if active_menu == 'ateliers' %}class="active"{% endif %}>
+	                    <a href="{{ path('app_workshop_index') }}">
+	                        <i class="ti-user"></i>
+	                        <p>Ateliers</p>
+	                    </a>
+	                </li>
 	            </ul>
 				
 	    	</div>
