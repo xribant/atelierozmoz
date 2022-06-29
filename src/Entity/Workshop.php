@@ -31,6 +31,9 @@ class Workshop
     #[ORM\Column(type: 'datetime')]
     private $updated_at;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $uid;
+
     public function __construct()
     {
         $this->created_at = new DateTime();
@@ -91,6 +94,18 @@ class Workshop
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getUid(): ?string
+    {
+        return $this->uid;
+    }
+
+    public function setUid(string $uid): self
+    {
+        $this->uid = $uid;
 
         return $this;
     }
