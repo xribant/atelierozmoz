@@ -1,0 +1,56 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+ {{ form_row(form._token) }}
+    <form id="registerForm" action="" method="post">
+        <div class="card-content">
+            <div class="form-group {% if form_errors(form.email) %}has-error{% endif %}">
+                <label class="control-label">
+                    Adresse E-Mail <star>*</star>
+                </label>
+                {{ form_row(form.email) }}
+            </div>
+            <div class="form-group {% if form_errors(form.firstName) %}has-error{% endif %}">
+                <label class="control-label">
+                    Prénom <star>*</star>
+                </label>
+                {{ form_row(form.firstName) }}
+            </div>
+            <div class="form-group {% if form_errors(form.lastName) %}has-error{% endif %}">
+                <label class="control-label">
+                    Nom <star>*</star>
+                </label>
+                {{ form_row(form.lastName) }}
+            </div>
+            <div class="form-group {% if form_errors(form.password) %}has-error{% endif %}">
+                <label class="control-label">Mot de passe <star>*</star></label>
+                {{ form_row(form.password) }}
+            </div>
+            <div class="form-group {% if form_errors(form.Roles) %}has-error{% endif %}">
+                <label class="control-label">
+                    Role <star>*</star>
+                </label>
+                {{ form_row(form.Roles) }}
+            </div>
+            <div class="form-group {% if form_errors(form.imageFile) %}has-error{% endif %}">
+            <div class="input-group">
+                <label class="control-label">
+                    Image de couverture actuelle:
+                </label>
+            </div>
+            {% if user.imageName %}
+                <img id="imgPreview" src="{{ vich_uploader_asset(user, 'imageFile') }}" class="profile-photo" alt="Photo">
+            {% else %}
+                <img id="imgPreview" src="{{ asset('build/face.png') }}" class="profile-photo" alt="Photo">
+            {% endif %}
+            <div class="input-group">
+                {{ form_row(form.imageFile) }}
+            </div>
+        </div>
+            <div class="category"><star>*</star> Champs obligatoires</div>
+            <div class="card-footer">
+                <a class="btn btn-danger btn-fill pull-right" href="{{ path('app_user_index') }}" style="margin-left: 1rem;">Annuler</a>
+                <button class="btn btn-info btn-fill pull-right">{{ button_label|default('Enregistrer') }}</button>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </form>
+{{ form_end(form) }}

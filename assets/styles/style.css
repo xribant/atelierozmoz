@@ -833,3 +833,8 @@ a:focus {
 }
 
 /* end footer section*/
+
+.profile-photo {
+  width: 10rem;
+  border-radius: 50%;
+}
