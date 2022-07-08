@@ -4,8 +4,11 @@ namespace App\Entity;
 
 use App\Repository\WorkshopRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: WorkshopRepository::class)]
 class Workshop
@@ -16,9 +19,12 @@ class Workshop
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank(message: 'Veuillez entrer un intitulé')]
     private $title;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank(message: 'Veuillez entrer une description')]
+    #[Assert\Length(min: 2, max: 500, minMessage: "Entrez au moins {{ limit }} caractères", maxMessage: "Maximum {{ limit }} caractères !!!")]
     private $description;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -34,10 +40,15 @@ class Workshop
     #[ORM\Column(type: 'string', length: 255)]
     private $uid;
 
+    #[ORM\OneToMany(mappedBy: 'workshop', targetEntity: Event::class, orphanRemoval: true)]
+    private $events;
+
     public function __construct()
     {
         $this->created_at = new DateTime();
         $this->updated_at = new DateTime();
+        $this->uid = uniqid();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -106,6 +117,36 @@ class Workshop
     public function setUid(string $uid): self
     {
         $this->uid = $uid;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setWorkshop($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            // set the owning side to null (unless already changed)
+            if ($event->getWorkshop() === $this) {
+                $event->setWorkshop(null);
+            }
+        }
 
         return $this;
     }

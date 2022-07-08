@@ -30,7 +30,6 @@ class WorkshopController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $workshop->setUid(uniqid());
             $workshopRepository->add($workshop, true);
 
             return $this->redirectToRoute('app_workshop_index', [], Response::HTTP_SEE_OTHER);
