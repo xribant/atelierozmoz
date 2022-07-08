@@ -1,13 +1,21 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/admin_base.html.twig' %}
 
-{% block title %}Edit Workshop{% endblock %}
+{% block title %}Modifier un atelier{% endblock %}
 
-{% block body %}
-    <h1>Edit Workshop</h1>
+{% block pageTitle %}Modifier un atelier{% endblock %}
 
-    {{ include('workshop/_form.html.twig', {'button_label': 'Update'}) }}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
 
-    <a href="{{ path('app_workshop_index') }}">back to list</a>
+                    {{ include('admin/workshop/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    {{ include('workshop/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,42 +1,46 @@
 {% extends 'admin/admin_base.html.twig' %}
 
-{% block title %}Ateliers{% endblock %}
+{% block title %}Agenda{% endblock %}
 
-{% block pageTitle %}Gestion des ateliers{% endblock %}
+{% block pageTitle %}Planifier les ateliers{% endblock %}
 
 {% block content %}
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-content">
                             <div class="toolbar">
                                 <!--Here you can write extra buttons/actions for the toolbar-->
-                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_workshop_new') }}">Créer un atelier</a>
+                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_event_new') }}">Planifier un atelier</a>
                             </div>
                             <table id="adminUsers-table" class="table">
                                 <thead>
                                     <th>#</th>
-                                    <th>Titre</th>
-                                    <th>Création</th>
+                                    <th>Atelier</th>
+                                    <th>Début</th>
+                                    <th>Fin</th>
+                                    <th>Créé le</th>
                                     <th>Modifié le</th>
                                     <th>Actions</th>
                                 </thead>
                                 <tbody>
-                                {% for workshop in workshops %}
+                                {% for event in events %}
                                 <tr>
                                     <td>{{ loop.index }}</td>
-                                    <td>{{ workshop.title }}</td>
-                                    <td>{{ workshop.createdAt ? workshop.createdAt|format_datetime('medium', 'short',locale='fr') }}</td>
-                                    <td>{{ workshop.updatedAt ? workshop.updatedAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>{{ event.workshop.title }}</td>
+                                    <td>{{ event.startAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>{{ event.stopAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>{{ event.createdAt ? event.createdAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>{{ event.updatedAt ? event.updatedAt|format_datetime('medium', 'short',locale='fr') }}</td>
                                     <td>
                                         <div>
-                                                <a rel="tooltip" title="Modifier" class="btn btn-simple btn-warning btn-icon" href="{{ path('app_workshop_edit', {'uid': workshop.uid}) }}">
+                                                <a rel="tooltip" title="Modifier" class="btn btn-simple btn-warning btn-icon" href="{{ path('app_event_edit', {'uid': event.uid}) }}">
                                                     <i class="ti-pencil-alt"></i>
                                                 </a>
-                                                <form style="display: inline-block;" method="post" action="{{ path('app_workshop_delete', {'uid': workshop.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cet atelier?');">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ workshop.uid) }}">
+                                                <form style="display: inline-block;" method="post" action="{{ path('app_event_delete', {'uid': event.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cet évènement?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.uid) }}">
                                                     <button rel="tooltip" title="Supprimer" class="btn btn-simple btn-danger btn-icon"><i class="ti-close"></i></button>
                                                 </form>
                                         </div>
@@ -44,7 +48,7 @@
                                 </tr>
                                 {% else %}
                                     <tr>
-                                        <td colspan="5">Pas d'ateliers</td>
+                                        <td colspan="7">Pas d'évènement planifié</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

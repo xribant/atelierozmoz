@@ -93,8 +93,14 @@
 	                </li>
 					<li {% if active_menu == 'ateliers' %}class="active"{% endif %}>
 	                    <a href="{{ path('app_workshop_index') }}">
-	                        <i class="ti-user"></i>
+	                        <i class="ti-palette"></i>
 	                        <p>Ateliers</p>
+	                    </a>
+	                </li>
+					<li {% if active_menu == 'agenda' %}class="active"{% endif %}>
+	                    <a href="{{ path('app_event_index') }}">
+	                        <i class="ti-calendar"></i>
+	                        <p>Agenda</p>
 	                    </a>
 	                </li>
 	            </ul>
@@ -165,6 +171,7 @@
 
 	<!--  Date Time Picker Plugin is included in this js file -->
 	<script src="{{ asset('admin/js/bootstrap-datetimepicker.js') }}"></script>
+	<script src="{{ asset('admin/js/locales/fr.js') }}"></script>
 
 	<!--  Select Picker Plugin -->
 	<script src="{{ asset('admin/js/bootstrap-selectpicker.js') }}"></script>
@@ -212,6 +219,31 @@
             // Init DatetimePicker
             demo.initFormExtendedDatetimepickers();
         });
+
+            $(function () {
+                $('.datepicker').datetimepicker({
+                    locale: 'fr',
+                    format: 'L'
+                });
+            });
+
+			 $(function () {
+                $('.datetimepicker').datetimepicker({
+                    locale: 'fr',
+                    format: 'DD/MM/YYYY HH:mm',
+					icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-screenshot',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-remove'
+                }
+                });
+            });
     </script>
 
 </html>

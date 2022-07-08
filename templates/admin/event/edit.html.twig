@@ -1,8 +1,8 @@
 {% extends 'admin/admin_base.html.twig' %}
 
-{% block title %}Nouvel atelier{% endblock %}
+{% block title %}Modifier un évènement{% endblock %}
 
-{% block pageTitle %}Créer un atelier{% endblock %}
+{% block pageTitle %}Modifier un évènement{% endblock %}
 
 {% block content %}
 <div class="content">
@@ -11,7 +11,7 @@
             <div class="col-md-6">
                 <div class="card">
 
-                {{ include('admin/workshop/_form.html.twig') }}
+                    {{ include('admin/event/_form.html.twig', {'button_label': 'Modifier'}) }}
 
                 </div>
             </div>
