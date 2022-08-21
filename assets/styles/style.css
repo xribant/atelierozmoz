@@ -188,7 +188,7 @@ a:focus {
 
 a:hover,
 a:focus {
-  color: initial;
+  color: #3ca4a8;
 }
 
 .btn,
@@ -539,14 +539,14 @@ a:focus {
 .contact_section label {
   display: flex;
   flex-direction: column;
-  color: #797879;
+  color: #ffffff;
   margin-bottom: 25px;
 }
 
 .contact_section input,
 .contact_section textarea {
   outline: none;
-  border: 1px solid #c1c1c2;
+  border: 1px solid #000000;
   width: 90%;
   height: 45px;
   padding: 0 15px;
@@ -636,6 +636,17 @@ a:focus {
   color: #191919;
 }
 
+.info_section h2 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.info_section span {
+  color: #000000;
+}
+
 .info_section .social-box {
   margin: 25px 0;
 }
@@ -657,6 +668,7 @@ a:focus {
 
 
 .info_section .form_container input {
+  margin-bottom: 3rem;
   width: 95%;
   height: 45px;
   border-radius: 0;
@@ -669,6 +681,13 @@ a:focus {
 
 .info_section .form_container input::placeholder {
   color: #fff;
+}
+
+.info_section .form_container textarea {
+  margin-bottom: 1rem;
+  width: 95%;
+  opacity: 0.7;
+  padding: 10px;
 }
 
 
@@ -838,3 +857,34 @@ a:focus {
   width: 10rem;
   border-radius: 50%;
 }
+
+.event-image-preview {
+  width: 10rem;
+}
+
+/* About Section */
+
+.about_section h2 {
+  margin-bottom: 3rem;
+}
+
+.about_section p {
+  text-align: left;
+}
+
+.about_section img {
+  width: 100%;
+  text-align: center;
+}
+
+
+/* End About Section */
+
+/* Infos ateliers section */
+
+.info_ateliers h2 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+/* Fin Infos ateliers section */

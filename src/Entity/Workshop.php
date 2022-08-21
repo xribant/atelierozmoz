@@ -43,6 +43,9 @@ class Workshop
     #[ORM\OneToMany(mappedBy: 'workshop', targetEntity: Event::class, orphanRemoval: true)]
     private $events;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $imageName;
+
     public function __construct()
     {
         $this->created_at = new DateTime();
@@ -147,6 +150,18 @@ class Workshop
                 $event->setWorkshop(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): self
+    {
+        $this->imageName = $imageName;
 
         return $this;
     }
