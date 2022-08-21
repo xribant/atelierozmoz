@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A Propos{% endblock %}
+
+{% block bodyType %}<body class="sub_page">{% endblock %}
+
+{% block content %}
+
+ </div>
+
+  <!-- A Propos section -->
+  <section class="about_section">
+    <div class="container">
+        <div class="row">
+            <h2>
+                A propos d'Ôzmoz
+            </h2>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-5">
+                <img src="{{ asset('build/sabrina.png') }}" alt="">
+            </div>
+            <div class="col-md-7">
+                <p>
+                    Formée comme institutrice primaire, j’ai tout d’abord enseigné dans l’enseignement spécialisé de type 8 durant de nombreuses années.
+                    Différentes formations, recherches et lectures sont venues enrichir ma pratique professionnelle et c’est en 2012 que je lance Ôzmoz. 
+                    Quelques travaux plus tard, me voilà à vous accueillir dans mon atelier à Mont-Saint-Guibert.
+                </p>
+                <p>
+                    Je suis formée en journal créatif®, en carnet de deuil, carnet totem, à la science du bonheur et coach certifiée en psychologie positive, en coaching scolaire.
+                </p>
+                <p>
+                    Formée par Isabelle Roskam et Moïra Mikolajczak en 2022, j’accompagne également les parents en épuisement et burn out parental.
+                </p>
+                <p>
+                    Je vous propose une palette d’ateliers pour prendre soin de vous, de vos émotions afin de (re)trouver un équilibre intérieur.
+                </p>
+                <p>
+                    Ôzmoz, l’art de se créer, ce sont des accompagements individuels, des formations, des stages, des ateliers pour les enfants, ados et adultes et des ateliers en famille.
+                </p>
+                <p>
+                    J’interviens également au sein de votre école, structure d’accueil ou entreprise.
+                </p>
+                <p>
+                    <strong>Sabrina Bailliez.</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+  </section>  
+  <!-- Fin A Propos section -->
+
+  <!-- Infos ateliers section -->
+  <section class="info_ateliers"> 
+        <div class="container">
+            <div class="row">
+                <h2>
+                    Les ateliers proposés
+                </h2>
+            </div>
+        </div>
+  </section>
+  <!-- Fin Info ateliers section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding">
+    <div class="container info_content">
+      <div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6 contactUs">
+                <h5>
+                  A Propos
+                </h5>
+                <ul>
+                  <li>
+                      Institutrice, animatrice certifiée au journal créatif®, au carnet de deuil®, à la science du bonheur et coach certifiée en psychologie positive et scolaire,  je vous propose une palette d'ateliers pour prendre soin de vous, de vos pensées, de vos émotions afin de (re)trouver un équilibre intérieur.
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6 contactUs">
+                <h5>
+                  Contact
+                </h5>
+                <ul>
+                  <li>
+                      <span class="brand">Ôzmoz | Sabrina Bailliez</span>
+                  </li>
+                  <li>
+                      40 Rue des Tilleuls<br>
+                      1435 Hévillers<br>
+                      (Mont-Saint-Guibert)
+                    </a>
+                  </li>
+                  <li>
+                      0475 62 40 64
+                  </li>
+                  <li>
+                    <a href="{{ path('app_home') }}" target="_blank">
+                      www.atelierozmoz.be
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:info@atelierozmoz.be">
+                      info@atelierozmoz.be
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <div id="newsletter" class="form_container mt-5">
+              <h5>
+                NEWSLETTER
+              </h5>
+              <form action="">
+                <input type="email" placeholder="Entrez votre adresse e-mail" />
+                <button type="submit">
+                  S'inscrire
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info_img-box">
+              <img src="{{ asset('build/about.png') }}" alt="">
+            </div>
+            <div class="d-flex justify-content-end pr-5">
+              <div class="social-box">
+                <a href="https://www.facebook.com/Ozmoz.be" target="_blank">
+                  <img src="{{ asset('build/fb.png') }}" alt="" />
+                </a>
+                <a href="https://www.pinterest.com/bailsab/_created/" target="_blank">
+                  <img src="{{ asset('build/pinterest.png') }}" alt="" />
+                </a>
+                <a href="https://www.instagram.com/ozmoz_lart_de_se_creer/?hl=fr" target="_blank">
+                  <img src="{{ asset('build/instagram1.png') }}" alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+{% endblock %}
+

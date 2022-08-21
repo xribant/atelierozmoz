@@ -26,54 +26,56 @@
 {% endblock %}
 
 </head>
-    <body>
+    {% block bodyType %}{% endblock %}
+    {{ flasher_render() }}
         <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container">
-          <a class="navbar-brand" href="{{ path('app_home') }}">
-            <span>
-              Ôzmoz
-            </span>
-          </a>
+          <!-- header section strats -->
+          <header class="header_section">
+            <div class="container-fluid">
+              <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand" href="{{ path('app_home') }}">
+                  <span>
+                    Ôzmoz
+                  </span>
+                </a>
 
-          <div class="navbar-collapse" id="">
+                <div class="navbar-collapse" id="">
 
-            <div class="custom_menu-btn">
-              <button onclick="openNav()">
-                <span class="s-1">
+                  <div class="custom_menu-btn">
+                    <button onclick="openNav()">
+                      <span class="s-1">
 
-                </span>
-                <span class="s-2">
+                      </span>
+                      <span class="s-2">
 
-                </span>
-                <span class="s-3">
+                      </span>
+                      <span class="s-3">
 
-                </span>
-              </button>
+                      </span>
+                    </button>
+                  </div>
+                  <div id="myNav" class="overlay">
+
+                    <div class="overlay-content">
+                      <a href="{{ path('app_home') }}">ACCUEIL</a>
+                      <a href="{{ path('app_about') }}">A PROPOS D'ÔZMOZ</a>
+                      <a href="#">AGENDA</a>
+                      <a href="{{ path('app_contact') }}">CONTACT</a>
+                    </div>
+
+                  </div>
+                </div>
+              </nav>
             </div>
-            <div id="myNav" class="overlay">
+          </header>
+          <!-- end header section -->
 
-              <div class="overlay-content">
-                <a href="{{ asset('app_home') }}">ACCUEIL</a>
-                <a href="team.html">TEAM</a>
-                <a href="portfolio.html">PORTFOLIO</a>
-                <a href="contact.html">CONTACT US</a>
-              </div>
-
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-   
-   {% block content %}
-   {% endblock %}
+          {% block content %}
+          {% endblock %}
 
   <!-- end info section -->
-  <hr class="footer_hr">
+  
+  
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>

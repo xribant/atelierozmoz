@@ -15,6 +15,8 @@
         "doctrine/orm": "^2.12",
         "friendsofsymfony/ckeditor-bundle": "^2.4",
         "gedmo/doctrine-extensions": "^3.7",
+        "karser/karser-recaptcha3-bundle": "^0.1.22",
+        "php-flasher/flasher-toastr-symfony": "^1.7",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.5",
         "sensio/framework-extra-bundle": "^6.1",
