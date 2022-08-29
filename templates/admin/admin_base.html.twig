@@ -103,6 +103,33 @@
 	                        <p>Agenda</p>
 	                    </a>
 	                </li>
+					
+					<li>
+						<a data-toggle="collapse" href="#tablesExamples" {% if active_menu == 'newsletter_subscribers' %}aria-expanded="true"{% endif %}>
+	                        <i class="ti-email"></i>
+	                        <p>
+								Newsletter
+	                           <b class="caret"></b>
+	                        </p>
+	                    </a>
+	                    <div {% if active_menu == 'newsletter_subscribers' %}class="collapse in"{% else %}class="collapse"{% endif %} id="tablesExamples">
+	                        <ul class="nav">
+								<li {% if active_menu == 'newsletter_subscribers' %}class="active"{% endif %}>
+									<a href="{{ path('app_news_subscriber_index') }}">
+										<span class="sidebar-mini">LI</span>
+										<span class="sidebar-normal">Lecteurs inscrits</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="sidebar-mini">NM</span>
+										<span class="sidebar-normal">News Management</span>
+									</a>
+								</li>
+	                        </ul>
+	                    </div>
+	                </li>
+					
 	            </ul>
 				
 	    	</div>

@@ -69,7 +69,7 @@ class Event
     private $slug;
 
     /**
-     * @Vich\UploadableField(mapping="user_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="event_image", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize="1M",
      *     maxSizeMessage="La taille du fichier doit être inférieure à 1 Mb",

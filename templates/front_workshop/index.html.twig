@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}A Propos{% endblock %}
+{% block title %}{{ workshop.title }} | Détails{% endblock %}
 
 {% block bodyType %}<body class="sub_page">{% endblock %}
 
@@ -14,33 +14,17 @@
       <div class="row">
         <div class="col-lg-12 d-flex justify-content-start" data-aos="fade-right">
               <h2>
-                  A propos d'Ôzmoz
+                  {{ workshop.title }}
               </h2>
         </div>   
       </div>
       <div class="row mt-5 mb-5">
         <div class="col-sm d-flex justify-content-start" data-aos="fade-right">
-          <img src="{{ asset('build/sabrina.png') }}" alt="photo-sabrina">
+          <img src="{{ vich_uploader_asset(workshop, 'imageFile') }}" alt="Atelier">
         </div>
         <div class="col-sm" data-aos="fade-left">
           <div class="row  d-flex pl-2 text-left">
-            <p>
-              Formée comme institutrice primaire, j’ai tout d’abord enseigné dans l’enseignement spécialisé de type 8 durant de nombreuses années.
-              Différentes formations, recherches et lectures sont venues enrichir ma pratique professionnelle et c’est en 2012 que je lance Ôzmoz. 
-              Quelques travaux plus tard, me voilà à vous accueillir dans mon atelier à Mont-Saint-Guibert.
-            </p>
-            <p>
-              Je suis formée en journal créatif®, en carnet de deuil, carnet totem, à la science du bonheur et coach certifiée en psychologie positive, en coaching scolaire.
-              Formée par Isabelle Roskam et Moïra Mikolajczak en 2022, j’accompagne également les parents en épuisement et burn out parental.
-            </p>
-            <p>
-              Je vous propose une palette d’ateliers pour prendre soin de vous, de vos émotions afin de (re)trouver un équilibre intérieur.
-              Ôzmoz, l’art de se créer, ce sont des accompagements individuels, des formations, des stages, des ateliers pour les enfants, ados et adultes et des ateliers en famille.
-              J’interviens également au sein de votre école, structure d’accueil ou entreprise.
-            </p>
-            <p>
-              <span>Sabrina.</span>
-            </p>
+            {{ workshop.description|raw }}
           </div>
         </div>
       </div>
@@ -54,26 +38,12 @@
       <div class="row">
         <div class="col-lg-12" data-aos="fade-right">
           <h2 class="mt-5 mb-5">
-            Mes ateliers
+            Les prochaines sessions
           </h2>
         </div>
       </div>
       <div class="row d-flex">
-            {% for workshop in workshops %}
-
-            <div class="col-md-4 workshop-item" data-aos="fade-up">
-                <a href="{{ path('app_front_workshop_details', {'slug': workshop.slug} ) }}" class="d-flex justify-content-center align-items-center" style="background-image: url('{{ vich_uploader_asset(workshop, 'imageFile') }}');">
-                  <div class="icon d-flex justify-content-center align-items-center">
-                    <i class="fa-solid fa-link"></i>
-                  </div>
-                </a>
-                <h2 class="mb-0 mt-4">{{ workshop.title }}</h2>
-                  <div class="d-flex mb-3">
-                    <span class="cat">{{ workshop.description|raw }}</span>
-                  </div>
-            </div>
-            
-            {% endfor %}
+            Pas de sessions planifiées pour le moment
       </div>
     </div>
   </section>
@@ -166,4 +136,5 @@
   </section>
 
 {% endblock %}
+
 

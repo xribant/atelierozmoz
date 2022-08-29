@@ -28,7 +28,7 @@
                    Ôzmoz, l'art de se créer, ce sont des formations, des stages, des ateliers pour les adultes, les ados et les enfants. 
                   </p>
                   <div>
-                    <a href="">
+                    <a href="{{ path('app_about') }}">
                       En savoir plus
                     </a>
                   </div>
@@ -261,16 +261,18 @@
                 </ul>
               </div>
             </div>
-            <div id="newsletter" class="form_container mt-5">
+            <div id="newsletter" class="form_container mt-5 {% if form_errors(form.email) %}has-error{% endif %}">
               <h5>
                 NEWSLETTER
               </h5>
-              <form action="">
-                <input type="email" placeholder="Entrez votre adresse e-mail" />
-                <button type="submit">
-                  S'inscrire
-                </button>
-              </form>
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate' }}) }}
+                  {{ form_row(form._token) }}
+                  <form action="" method="post">
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.captcha) }}
+                    <button class="mt-0">S'inscrire</button>
+                  </form>
+                {{ form_end(form) }} 
             </div>
           </div>
           <div class="col-md-6">

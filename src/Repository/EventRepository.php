@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Event;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -37,6 +38,17 @@ class EventRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findNext(): array
+    {
+      return $this->createQueryBuilder('e')
+            ->andWhere('e.start_at > :today')
+            ->setParameter('today', new DateTime())
+            ->orderBy('e.start_at', 'ASC')
+           ->getQuery()
+           ->getResult()
+      ;
     }
 
 //    /**

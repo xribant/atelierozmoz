@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class WorkshopType extends AbstractType
 {
@@ -31,6 +32,16 @@ class WorkshopType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Description',
                     'class' => 'form-control'
+                ]
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'label' => false,
+                'download_link' => false,
+                'download_uri' => false,
+                'delete_label' => 'Supprimer l\'image courante',
+                'attr' => [
+                    'class' => 'imageField'
                 ]
             ])
         ;

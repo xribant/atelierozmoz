@@ -221,7 +221,7 @@ a:focus {
 }
 
 .navbar-brand span {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Luckiest Guy', cursive;
   text-transform: uppercase;
   font-size: 28px;
   font-weight: 500;
@@ -631,6 +631,7 @@ a:focus {
 
 .info_section h5 {
   margin-bottom: 12px;
+  font-family: 'Luckiest Guy', cursive;
   font-size: 22px;
   font-weight: bold;
   color: #191919;
@@ -864,27 +865,123 @@ a:focus {
 
 /* About Section */
 
-.about_section h2 {
-  margin-bottom: 3rem;
-}
-
-.about_section p {
-  text-align: left;
-}
-
 .about_section img {
-  width: 100%;
-  text-align: center;
+  border: 1px;
+  border-radius: 1rem; 
+}
+
+.about_section span {
+  font-weight: 800;
 }
 
 
 /* End About Section */
 
-/* Infos ateliers section */
+/* Ateliers proposés */
 
-.info_ateliers h2 {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+.workshop-item a {
+  border-radius: 5px;
+  display: block;
+  height: 300px;
 }
 
-/* Fin Infos ateliers section */
+.workshop-item .icon {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  opacity: 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.workshop-item:hover .icon {
+  opacity: 1;
+}
+
+.workshop-item .fa-link {
+  color: #3ca4a8;
+  font-size: 2rem;
+}
+
+.workshop-item h2 {
+  font-family: 'Luckiest Guy', cursive;
+  color: #3ca4a8;
+}
+
+/* Fin ateliers proposés */
+
+/* Infos sessions */
+
+.infos-sessions h2 {
+  font-family: 'Luckiest Guy', cursive;
+  color: #000000;
+} 
+
+.infos-sessions td {
+  vertical-align: middle;
+  font-family: 'DynaPuff', cursive;
+}
+
+.infos-sessions .text {
+  font-size: 1.250rem;
+}
+
+.infos-sessions .table-workshop-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2rem;
+  color: #3ca4a8;
+}
+
+.infos-sessions a {
+  display: inline-block;
+  padding: 3px 15px;
+  border: 2px solid #3ca4a8;
+  background-color: #3ca4a8;
+  color: #ffffff;
+  border-radius: 25px;
+}
+
+.infos-sessions a:hover {
+  background-color: #fefeff;
+  color: #010106;
+}
+/* Fin infos sessions */
+
+/* Début détails évènement */
+
+.event-details h2 {
+  font-family: 'Luckiest Guy', cursive;
+  color: #000000;
+} 
+
+.event-details table {
+  font-family: 'DynaPuff', cursive;
+}
+
+.event-details a {
+  display: inline-block;
+  padding: 3px 15px;
+  border: 2px solid #3ca4a8;
+  background-color: #3ca4a8;
+  color: #ffffff;
+  border-radius: 25px;
+}
+
+.event-details a:hover {
+  background-color: #fefeff;
+  color: #010106;
+}
+
+.event-details .back-btn {
+  border: 2px solid #ff0000;
+  background-color: #3ca4a8;
+}
+
+/* Fin Détails évènement */
