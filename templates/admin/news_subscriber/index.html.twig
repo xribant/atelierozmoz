@@ -1,0 +1,52 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Inscrits à la newsletter{% endblock %}
+
+{% block pageTitle %}Inscrits à la newsletter{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <table id="adminUsers-table" class="table">
+                                <thead>
+                                    <th>#</th>
+                                    <th>E-Mail</th>
+                                    <th>Inscription</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                {% for user in newsSubscribers %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.createdAt ? user.createdAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                                    <td>
+                                        <div>
+                                                <a rel="tooltip" title="Modifier" class="btn btn-simple btn-warning btn-icon" href="{{ path('app_news_subscriber_edit', {'uid': user.uid}) }}">
+                                                    <i class="ti-pencil-alt"></i>
+                                                </a>
+                                                <form style="display: inline-block;" method="post" action="{{ path('app_news_subscriber_delete', {'uid': user.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer ce lecteur?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.uid) }}">
+                                                    <button rel="tooltip" title="Supprimer" class="btn btn-simple btn-danger btn-icon"><i class="ti-close"></i></button>
+                                                </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4">Pas d'inscris</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!--  end card  -->
+                </div> <!-- end col-md-12 -->
+            </div> <!-- end row -->
+        </div>
+    </div>
+{% endblock %}

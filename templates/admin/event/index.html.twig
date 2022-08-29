@@ -19,6 +19,7 @@
                                 <thead>
                                     <th>#</th>
                                     <th>Atelier</th>
+                                    <th>Intitulé</th>
                                     <th>Début</th>
                                     <th>Fin</th>
                                     <th>Créé le</th>
@@ -30,6 +31,7 @@
                                 <tr>
                                     <td>{{ loop.index }}</td>
                                     <td>{{ event.workshop.title }}</td>
+                                    <td>{{ event.title }}</td>
                                     <td>{{ event.startAt|format_datetime('medium', 'short',locale='fr') }}</td>
                                     <td>{{ event.stopAt|format_datetime('medium', 'short',locale='fr') }}</td>
                                     <td>{{ event.createdAt ? event.createdAt|format_datetime('medium', 'short',locale='fr') }}</td>
@@ -48,7 +50,7 @@
                                 </tr>
                                 {% else %}
                                     <tr>
-                                        <td colspan="7">Pas d'évènement planifié</td>
+                                        <td colspan="8">Pas d'évènement planifié</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

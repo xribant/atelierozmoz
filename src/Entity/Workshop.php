@@ -9,8 +9,14 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: WorkshopRepository::class)]
+/**
+ * @Vich\Uploadable()
+ */
 class Workshop
 {
     #[ORM\Id]
@@ -42,6 +48,19 @@ class Workshop
 
     #[ORM\OneToMany(mappedBy: 'workshop', targetEntity: Event::class, orphanRemoval: true)]
     private $events;
+
+    /**
+     * @Vich\UploadableField(mapping="workshop_image", fileNameProperty="imageName")
+     * @Assert\File(
+     *     maxSize="1M",
+     *     maxSizeMessage="La taille du fichier doit être inférieure à 1 Mb",
+     *     mimeTypes={"image/jpeg", "image/jpg", "image/png"},
+     *     mimeTypesMessage = "Fichiers .jpeg ou .png uniquement"
+     * )
+     * @var File|null
+     */
+    #[Assert\NotBlank(message: 'Veuillez sélectionner une image d\'illustration')]
+    private $imageFile;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $imageName;
@@ -152,6 +171,30 @@ class Workshop
         }
 
         return $this;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     */
+    public function setImageFile(?File $imageFile): Workshop
+    {
+        $this->imageFile = $imageFile;
+
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updated_at = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 
     public function getImageName(): ?string
