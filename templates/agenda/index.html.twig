@@ -38,7 +38,11 @@
                   <a href="{{ path('app_event_details', {'workshop_slug': event.workshop.slug ,'event_slug': event.slug }) }}">Détails</a>
                 </td>
                 <td>
-                  <a href="#">S'inscrire</a>
+                  {% if event.soldout == true %}
+                    <span><i class="fa-solid fa-lock"></i> Complet</span>
+                  {% else %} 
+                    <a href="#"><i class="fa-solid fa-lock-open"></i> S'inscrire</a>
+                  {% endif %}
                   </td>
               </tr>
             {% endfor %}
