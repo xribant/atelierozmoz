@@ -952,6 +952,17 @@ a:focus {
   background-color: #fefeff;
   color: #010106;
 }
+
+.infos-sessions span {
+  display: inline-block;
+  padding: 3px 15px;
+  border: 2px solid #ff0000;
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 25px;
+
+}
+
 /* Fin infos sessions */
 
 /* Début détails évènement */
@@ -979,9 +990,19 @@ a:focus {
   color: #010106;
 }
 
+.event-details span {
+  display: inline-block;
+  padding: 3px 15px;
+  border: 2px solid #ff0000;
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 25px;
+
+}
+
 .event-details .back-btn {
   border: 2px solid #ff0000;
-  background-color: #3ca4a8;
+  background-color: #ff0000;
 }
 
 /* Fin Détails évènement */
