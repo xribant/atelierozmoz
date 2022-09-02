@@ -111,6 +111,14 @@
       document.getElementById("myNav").classList.toggle("menu_width")
       document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
     }
+
+    $(function () {
+      $('.datepicker').datetimepicker({
+        locale: 'fr',
+        format: 'L'
+      });
+    });
+
   </script>
 
   {% block javascripts %}

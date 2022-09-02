@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\EventRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -83,6 +85,9 @@ class Event
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $imageName;
 
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventRegistration::class)]
+    private $eventRegistrations;
+
     public function __construct()
     {
         $this->created_at = new DateTime();
@@ -90,6 +95,7 @@ class Event
         $this->active = true;
         $this->soldout = false;
         $this->uid = uniqid();
+        $this->eventRegistrations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -285,6 +291,36 @@ class Event
     public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EventRegistration>
+     */
+    public function getEventRegistrations(): Collection
+    {
+        return $this->eventRegistrations;
+    }
+
+    public function addEventRegistration(EventRegistration $eventRegistration): self
+    {
+        if (!$this->eventRegistrations->contains($eventRegistration)) {
+            $this->eventRegistrations[] = $eventRegistration;
+            $eventRegistration->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventRegistration(EventRegistration $eventRegistration): self
+    {
+        if ($this->eventRegistrations->removeElement($eventRegistration)) {
+            // set the owning side to null (unless already changed)
+            if ($eventRegistration->getEvent() === $this) {
+                $eventRegistration->setEvent(null);
+            }
+        }
 
         return $this;
     }
