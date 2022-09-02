@@ -1,0 +1,21 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Inscription à un atelier{% endblock %}
+
+{% block pageTitle %}Inscription à un atelier{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+
+                {{ include('admin/event_registration/_form.html.twig') }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

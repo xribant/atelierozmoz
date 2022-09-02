@@ -1,0 +1,62 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Inscriptions aux ateliers{% endblock %}
+
+{% block pageTitle %}Inscriptions aux ateliers{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="toolbar">
+                                <!--Here you can write extra buttons/actions for the toolbar-->
+                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_event_registration_new') }}">Nouvelle inscription</a>
+                            </div>
+                            <table id="adminUsers-table" class="table">
+                                <thead>
+                                    <th>#</th>
+                                    <th>Prénom</th>
+                                    <th>Nom</th>
+                                    <th>E-Mail</th>
+                                    <th>Atelier</th>
+                                    <th>Créé le</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                {% for registration in registrations %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ registration.firstName }}</td>
+                                    <td>{{ registration.lastName }}</td>
+                                    <td>{{ registration.email }}</td>
+                                    <td>{{ registration.event.workshop.title }} - {{ registration.event.title }}</td>
+                                    <td>{{ registration.createdAt ? registration.createdAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>
+                                        <div>
+                                                <a rel="tooltip" title="Modifier" class="btn btn-simple btn-warning btn-icon" href="{{ path('app_event_registration_edit', {'uid': registration.uid}) }}">
+                                                    <i class="ti-pencil-alt"></i>
+                                                </a>
+                                                <form style="display: inline-block;" method="post" action="{{ path('app_event_registration_delete', {'uid': registration.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cette inscription?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ registration.uid) }}">
+                                                    <button rel="tooltip" title="Supprimer" class="btn btn-simple btn-danger btn-icon"><i class="ti-close"></i></button>
+                                                </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="7">Pas d'inscriptions pour le moment</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!--  end card  -->
+                </div> <!-- end col-md-12 -->
+            </div> <!-- end row -->
+        </div>
+    </div>
+{% endblock %}

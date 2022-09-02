@@ -41,7 +41,7 @@
                   {% if event.soldout == true %}
                     <span><i class="fa-solid fa-lock"></i> Complet</span>
                   {% else %} 
-                    <a href="#"><i class="fa-solid fa-lock-open"></i> S'inscrire</a>
+                    <a href="{{ path('app_front_workshop_registration', {'workshop_slug': event.workshop.slug ,'event_slug': event.slug }) }}"><i class="fa-solid fa-lock-open"></i> S'inscrire</a>
                   {% endif %}
                   </td>
               </tr>

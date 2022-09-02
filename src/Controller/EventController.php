@@ -70,4 +70,15 @@ class EventController extends AbstractController
 
         return $this->redirectToRoute('app_event_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{uid}/activate', name: 'app_event_activate')]
+    public function activate(EventRepository $eventRepository, $uid)
+    {
+        
+        $status = $eventRepository->findOneBy(['uid' => $uid])->isActive();
+
+        if($status == true) { $eventRepository->setActive(false); } else { $eventRepository->setActive(true); }
+
+        return new Response("true");
+    }
 }

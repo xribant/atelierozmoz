@@ -103,7 +103,12 @@
 	                        <p>Agenda</p>
 	                    </a>
 	                </li>
-					
+					<li {% if active_menu == 'registration' %}class="active"{% endif %}>
+	                    <a href="{{ path('app_event_registration_index') }}">
+	                        <i class="ti-marker-alt"></i>
+	                        <p>Inscriptions</p>
+	                    </a>
+	                </li>
 					<li>
 						<a data-toggle="collapse" href="#tablesExamples" {% if active_menu == 'newsletter_subscribers' %}aria-expanded="true"{% endif %}>
 	                        <i class="ti-email"></i>
@@ -238,6 +243,9 @@
 
 	<!-- Paper Dashboard PRO DEMO methods, don't include it in your project! -->
 	<script src="{{ asset('admin/js/demo.js') }}"></script>
+
+	{% block javascripts %}
+	{% endblock %}
 
     <script type="text/javascript">
         $().ready(function(){

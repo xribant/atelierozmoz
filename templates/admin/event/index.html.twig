@@ -22,6 +22,8 @@
                                     <th>Intitulé</th>
                                     <th>Début</th>
                                     <th>Fin</th>
+                                    <th>Activé</th>
+                                    <th>Complet</th>
                                     <th>Créé le</th>
                                     <th>Modifié le</th>
                                     <th>Actions</th>
@@ -34,6 +36,12 @@
                                     <td>{{ event.title }}</td>
                                     <td>{{ event.startAt|format_datetime('medium', 'short',locale='fr') }}</td>
                                     <td>{{ event.stopAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>
+                                        <input type="checkbox" class="switch" {{ (event.active) ? 'checked' : '' }} data-id="{{ event.uid }}">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" class="switch" {{ (event.soldout) ? 'checked' : '' }} data-id="{{event.uid}}">
+                                    </td>
                                     <td>{{ event.createdAt ? event.createdAt|format_datetime('medium', 'short',locale='fr') }}</td>
                                     <td>{{ event.updatedAt ? event.updatedAt|format_datetime('medium', 'short',locale='fr') }}</td>
                                     <td>
@@ -61,4 +69,22 @@
             </div> <!-- end row -->
         </div>
     </div>
+{% endblock %}
+
+ {% block javascripts %}
+    <script>
+        window.onload = () => {
+            var checkboxes = document.querySelectorAll("input[type=checkbox]")
+
+            for(let checkbox of checkboxes) {
+                checkbox.addEventListener('click', function () {
+                    console.log(checkbox)
+                    var xmlhttp = new XMLHttpRequest;
+
+                    xmlhttp.open("get", `/admin/event/${this.dataset.id}/activate`)
+                    xmlhttp.send()
+                })
+            }
+        };
+    </script>
 {% endblock %}

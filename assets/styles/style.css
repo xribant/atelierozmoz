@@ -1006,3 +1006,66 @@ a:focus {
 }
 
 /* Fin Détails évènement */
+
+/* Début formulaire inscription */
+
+.front-registration h2 {
+  font-family: 'Luckiest Guy', cursive;
+  color: #000000;
+}
+
+.front-registration .card {
+  padding: 2rem;
+  /* background-color: #dee2e6; */
+  border-radius: 20px;
+  border: solid 1px #ccc;
+}
+
+.front-registration .control-label {
+  font-family: 'DynaPuff', cursive;
+  font-size: 1.25rem;
+  color: #000000;
+}
+
+.front-registration star {
+  color: #ff0000;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+}
+
+.front-registration .category {
+  font-family: 'DynaPuff', cursive;
+  color: #000000;
+}
+
+.front-registration .no-spin::-webkit-inner-spin-button, .no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.front-registration .no-spin {
+  -moz-appearance:textfield !important;
+}
+
+.front-registration a, button {
+  display: inline-block;
+  padding: 3px 15px;
+  border: 2px solid #3ca4a8;
+  background-color: #3ca4a8;
+  color: #ffffff;
+  border-radius: 25px;
+  font-family: 'DynaPuff', cursive;
+}
+
+.front-registration a:hover, button:hover {
+  background-color: #fefeff;
+  color: #010106;
+}
+
+.front-registration .back-btn {
+  border: 2px solid #ff0000;
+  background-color: #ff0000;
+  font-family: 'DynaPuff', cursive;
+}
+
+/* Fin formulaire inscription */
