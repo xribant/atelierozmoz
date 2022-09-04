@@ -7,7 +7,7 @@
 {% block content %}
 
  <!-- slider section -->
-    <section class=" slider_section position-relative">
+    <section class="slider_section position-relative">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">01</li>
@@ -18,6 +18,9 @@
             <div class="row">
               <div class="col-md-3 offset-md-2">
                 <div class="slider_detail">
+                  <div class="d-flex justify-content-center"> 
+                    <img class="mobile-slider-img" src="{{ asset('build/ozmoz_logo_white.png') }}" alt="slider-image">
+                  </div>
                   <h1>
                     ATELIERS &
                     <span>
@@ -36,7 +39,7 @@
               </div>
               <div class="col-md-7">
                 <div class="slider_img-box">
-                  <img src="{{ asset('build/ozmoz_logo_white.png') }}" alt="">
+                  <img class="slider-img" src="{{ asset('build/ozmoz_logo_white.png') }}" alt="slider-image">
                 </div>
               </div>
             </div>
@@ -46,6 +49,9 @@
             <div class="row">
               <div class="col-md-3 offset-md-2">
                 <div class="slider_detail">
+                  <div class="d-flex justify-content-center"> 
+                    <img class="mobile-slider-img" src="{{ asset('build/newsletter.png') }}" alt="slider-image">
+                  </div>
                   <h1>
                     NEWS
                     <span>
@@ -64,7 +70,7 @@
               </div>
               <div class="col-md-7">
                 <div class="slider_img-box">
-                  <img src="{{ asset('build/newsletter.png') }}" alt="">
+                  <img class="slider-img" src="{{ asset('build/newsletter.png') }}" alt="">
                 </div>
               </div>
             </div>
@@ -212,93 +218,5 @@
 
 
   <!-- end client section -->
-
-  <!-- info section -->
-  <section class="info_section layout_padding">
-    <div class="container info_content">
-      <div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-md-6 contactUs">
-                <h5>
-                  A Propos
-                </h5>
-                <ul>
-                  <li>
-                      Institutrice, animatrice certifiée au journal créatif®, au carnet de deuil®, à la science du bonheur et coach certifiée en psychologie positive et scolaire,  je vous propose une palette d'ateliers pour prendre soin de vous, de vos pensées, de vos émotions afin de (re)trouver un équilibre intérieur.
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-6 contactUs">
-                <h5>
-                  Contact
-                </h5>
-                <ul>
-                  <li>
-                      <span class="brand">Ôzmoz | Sabrina Bailliez</span>
-                  </li>
-                  <li>
-                      40 Rue des Tilleuls<br>
-                      1435 Hévillers<br>
-                      (Mont-Saint-Guibert)
-                    </a>
-                  </li>
-                  <li>
-                      0475 62 40 64
-                  </li>
-                  <li>
-                    <a href="{{ path('app_home') }}" target="_blank">
-                      www.atelierozmoz.be
-                    </a>
-                  </li>
-                  <li>
-                    <a href="mailto:info@atelierozmoz.be">
-                      info@atelierozmoz.be
-                    </a>
-                  </li>
-
-                </ul>
-              </div>
-            </div>
-            <div id="newsletter" class="form_container mt-5 {% if form_errors(form.email) %}has-error{% endif %}">
-              <h5>
-                NEWSLETTER
-              </h5>
-                {{ form_start(form, {'attr': {'novalidate': 'novalidate' }}) }}
-                  {{ form_row(form._token) }}
-                  <form action="" method="post">
-                    {{ form_row(form.email) }}
-                    {{ form_row(form.captcha) }}
-                    <button class="mt-0">S'inscrire</button>
-                  </form>
-                {{ form_end(form) }} 
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="info_img-box">
-              <img src="{{ asset('build/about.png') }}" alt="">
-            </div>
-            <div class="d-flex justify-content-end pr-5">
-              <div class="social-box">
-                <a href="https://www.facebook.com/Ozmoz.be" target="_blank">
-                  <img src="{{ asset('build/fb.png') }}" alt="" />
-                </a>
-                <a href="https://www.pinterest.com/bailsab/_created/" target="_blank">
-                  <img src="{{ asset('build/pinterest.png') }}" alt="" />
-                </a>
-                <a href="https://www.instagram.com/ozmoz_lart_de_se_creer/?hl=fr" target="_blank">
-                  <img src="{{ asset('build/instagram1.png') }}" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
-
-    </div>
-  </section>
 
 {% endblock %}
