@@ -1,0 +1,47 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+ {{ form_row(form._token) }}
+    <form id="workshopLocationForm" action="" method="post">
+        <div class="card-content">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-12 {% if form_errors(form.name) %}has-error{% endif %}">
+                        <label class="control-label">
+                            Nom <star>*</star>
+                        </label>
+                        {{ form_row(form.name) }}
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-12 {% if form_errors(form.address) %}has-error{% endif %}">
+                        <label class="control-label">
+                            Rue et n° <star>*</star>
+                        </label>
+                        {{ form_row(form.address) }}
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-8 {% if form_errors(form.city) %}has-error{% endif %}">
+                        <label class="control-label">
+                            Localité <star>*</star>
+                        </label>
+                        {{ form_row(form.city) }}
+                    </div>
+                    <div class="form-group col-lg-4 {% if form_errors(form.postalCode) %}has-error{% endif %}">
+                        <label class="control-label">Code postal <star>*</star></label>
+                        {{ form_row(form.postalCode) }}
+                    </div>
+                </div>
+                <div class="col-lg-12">    
+                    <div class="category"><star>*</star> Champs obligatoires</div>
+                    <div class="card-footer">
+                        <a class="btn btn-danger btn-fill pull-right" href="{{ path('app_workshop_location_index') }}" style="margin-left: 1rem;">Annuler</a>
+                        <button class="btn btn-info btn-fill pull-right">{{ button_label|default('Enregistrer') }}</button>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+{{ form_end(form) }}

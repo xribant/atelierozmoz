@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Workshop;
 use App\Repository\WorkshopRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

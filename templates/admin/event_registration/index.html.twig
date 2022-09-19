@@ -15,7 +15,7 @@
                                 <!--Here you can write extra buttons/actions for the toolbar-->
                                 <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_event_registration_new') }}">Nouvelle inscription</a>
                             </div>
-                            <table id="adminUsers-table" class="table">
+                            <table id="eventRegistration-table" class="table">
                                 <thead>
                                     <th>#</th>
                                     <th>Prénom</th>
@@ -59,4 +59,22 @@
             </div> <!-- end row -->
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+	    $('#eventRegistration-table').DataTable({
+	        "pagingType": "full_numbers",
+	        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+	        responsive: false,
+	        language: {
+	            url: '/assets/admin/js/localization/fr_fr.json'
+		    }
+	    });
+	});
+
+</script>
 {% endblock %}

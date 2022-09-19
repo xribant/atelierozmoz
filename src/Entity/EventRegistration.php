@@ -29,6 +29,7 @@ class EventRegistration
     private $email;
 
     #[ORM\Column(type: 'datetime')]
+    #[Assert\NotBlank(message: 'Veuillez entrer votre date de naissance')]
     private $born_at;
 
     #[ORM\Column(type: 'datetime')]
@@ -111,7 +112,7 @@ class EventRegistration
         return $this->born_at;
     }
 
-    public function setBornAt(\DateTimeInterface $born_at): self
+    public function setBornAt(?\DateTimeInterface $born_at): self
     {
         $this->born_at = $born_at;
 

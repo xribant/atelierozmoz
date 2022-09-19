@@ -88,6 +88,10 @@ class Event
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventRegistration::class)]
     private $eventRegistrations;
 
+    #[ORM\ManyToOne(inversedBy: 'events')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?WorkshopLocation $location = null;
+
     public function __construct()
     {
         $this->created_at = new DateTime();
@@ -321,6 +325,18 @@ class Event
                 $eventRegistration->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLocation(): ?WorkshopLocation
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?WorkshopLocation $location): self
+    {
+        $this->location = $location;
 
         return $this;
     }

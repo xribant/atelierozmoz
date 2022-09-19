@@ -1,0 +1,60 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Localisations{% endblock %}
+
+{% block pageTitle %}Localisations{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="toolbar">
+                                <!--Here you can write extra buttons/actions for the toolbar-->
+                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_workshop_location_new') }}">Créer un lieu d'atelier</a>
+                            </div>
+                            <table id="adminUsers-table" class="table">
+                                <thead>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Adresse</th>
+                                    <th>Localité</th>
+                                    <th>Code postal</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                {% for location in locations %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ location.name }}</td>
+                                    <td>{{ location.address }}</td>
+                                    <td>{{ location.city }}</td>
+                                    <td>{{ location.postalCode }}</td>
+                                    <td>
+                                        <div>
+                                                <a rel="tooltip" title="Modifier" class="btn btn-simple btn-warning btn-icon" href="{{ path('app_workshop_location_edit', {'uid': location.uid}) }}">
+                                                    <i class="ti-pencil-alt"></i>
+                                                </a>
+                                                <form style="display: inline-block;" method="post" action="{{ path('app_workshop_location_delete', {'uid': location.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cette localisation?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ location.uid) }}">
+                                                    <button rel="tooltip" title="Supprimer" class="btn btn-simple btn-danger btn-icon"><i class="ti-close"></i></button>
+                                                </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="6">Pas de localisations</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!--  end card  -->
+                </div> <!-- end col-md-12 -->
+            </div> <!-- end row -->
+        </div>
+    </div>
+{% endblock %}

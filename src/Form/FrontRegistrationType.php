@@ -10,6 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class FrontRegistrationType extends AbstractType
 {
@@ -74,6 +77,18 @@ class FrontRegistrationType extends AbstractType
                 'attr' => [
                     'placeholder' => false,
                     'class' => 'form-control no-spin'
+                ]
+            ])
+            ->add('newsletter', CheckboxType::class, [
+                'required' => true,
+                'label' => 'Je veux recevoir la newsletter',
+                'mapped' => false,
+            ])
+            ->add('recaptcha', Recaptcha3Type::class, [
+                'constraints' => new Recaptcha3(),
+                'action_name' => 'app_home',
+                'attr' => [
+                    'class' => 'form-control'
                 ]
             ])
         ;

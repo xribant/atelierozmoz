@@ -294,6 +294,20 @@ a:focus {
   color: #010106;
 }
 
+.slider_detail button {
+  background-color: #3ca4a8;
+  display: inline-block;
+  padding: 9px 35px;
+  border: 2px solid #fefeff;
+  color: #fefeff;
+  border-radius: 35px;
+}
+
+.slider_detail button:hover {
+  background-color: #fefeff;
+  color: #010106;
+}
+
 .slider_img-box img {
   position: relative; 
   z-index: 2;
@@ -308,20 +322,6 @@ a:focus {
   display: none;
 }
 
-@media only screen and (max-width: 600px) {
-  .slider_section .slider-img {
-   display: none;
-  }
-
-  .slider_section .mobile-slider-img {
-    display: block;
-    width: 50%;
-    height: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem; 
-  }
-}
-
 .slider_img-box::after {
   content: "";
   position: absolute;
@@ -330,13 +330,13 @@ a:focus {
   transform: translate(-50%, -50%);
   width: 90%;
   height: 40%;
-  background-color: #fff;
-  filter: blur(95px) opacity(.7);
+  /* background-color: #fff; */
+  /* filter: blur(95px) opacity(.7); */
 
 }
 
 .slider_section .carousel-indicators {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'DynaPuff', cursive;
   font-weight: 500;
   color: #fff;
   justify-content: flex-start;
@@ -424,6 +424,24 @@ a:focus {
   text-align: center;
 }
 
+.about_section h1 {
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.about_section img {
+  width: 100%;
+  height: auto;
+}
+
+.about_section .workshop-img {
+  width: 25rem;;
+  height: auto;
+}
+
+.about_section p {
+  font-family: 'DynaPuff', cursive;
+} 
+
 .about_section h4 {
   font-size: 22px;
 }
@@ -477,6 +495,48 @@ a:focus {
   color: #fefeff;
 }
 
+.info_ateliers h1 {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.info_ateliers .cat {
+  font-family: 'DynaPuff', cursive;
+}
+
+.info_ateliers span {
+  font-family: 'DynaPuff', cursive;
+}
+
+.info_ateliers table {
+  font-family: 'DynaPuff', cursive;
+}
+
+.info_ateliers a {
+  font-family: 'DynaPuff', cursive;
+  display: inline-block;
+  padding: 3px 15px;
+  border: 2px solid #3ca4a8;
+  background-color: #3ca4a8;
+  color: #ffffff;
+  border-radius: 25px;
+}
+
+.info_ateliers a:hover {
+  background-color: #fefeff;
+  color: #010106;
+}
+
+.info_ateliers .btn-soldout {
+  font-family: 'DynaPuff', cursive;
+  display: inline-block;
+  padding: 3px 15px;
+  border: 2px solid #ff0000;
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 25px;
+}
 
 /* end about section */
 
@@ -991,6 +1051,11 @@ a:focus {
   position: relative;
 }
 
+.info_section img {
+  width: 50%;
+  height: auto;
+}
+
 .info_section::before {
   content: "";
   position: absolute;
@@ -1106,7 +1171,14 @@ a:focus {
   color: #010106;
 }
 
+.info_section .social-box {
+  margin: auto;
+  width: 50%;
+  margin-top: 1rem;
+}
+
 /* end info section */
+
 .footer_hr {
   position: relative;
   width: 55%;
@@ -1318,18 +1390,36 @@ a:focus {
 
 /* Infos sessions */
 
-.infos-sessions h2 {
+.infos-sessions h1 {
   font-family: 'Luckiest Guy', cursive;
   color: #000000;
 } 
 
-.infos-sessions td {
-  vertical-align: middle;
-  font-family: 'DynaPuff', cursive;
+.infos-sessions .card {
+  border-radius: 10px;
+  border: solid 3px #3ca4a8;
 }
 
-.infos-sessions .text {
-  font-size: 1.250rem;
+.infos-sessions .event-img {
+  border-radius: 8px 8px 0 0; 
+  height: 15vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.infos-sessions h2 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2rem;
+  color: #3ca4a8;
+}
+
+.infos-sessions .card-text {
+  font-family: 'DynaPuff', cursive;
+  
+}
+
+.infos-sessions .card-text i {
+  margin-right: 1rem;
 }
 
 .infos-sessions .table-workshop-title {
@@ -1339,6 +1429,7 @@ a:focus {
 }
 
 .infos-sessions a {
+  font-family: 'DynaPuff', cursive;
   display: inline-block;
   padding: 3px 15px;
   border: 2px solid #3ca4a8;
@@ -1353,14 +1444,36 @@ a:focus {
 }
 
 .infos-sessions span {
+  font-family: 'DynaPuff', cursive;
   display: inline-block;
   padding: 3px 15px;
   border: 2px solid #ff0000;
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 25px;
-
 }
+
+.infos-sessions .modal-title {
+  font-family: 'Luckiest Guy', cursive;
+  color: #3ca4a8;
+  font-size: 2rem;
+}
+
+.infos-sessions .modal-body {
+  font-family: 'DynaPuff', cursive;
+  color: #000000;
+}
+
+.infos-sessions .modal-footer button {
+  font-family: 'DynaPuff', cursive;
+  display: inline-block;
+  padding: 3px 15px;
+  border: 2px solid #3ca4a8;
+  background-color: #3ca4a8;
+  color: #ffffff;
+  border-radius: 25px;
+}
+
 
 /* Fin infos sessions */
 
@@ -1467,4 +1580,76 @@ a:focus {
   font-family: 'DynaPuff', cursive;
 }
 
+
+.front-registration .form-check-input {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.front-registration .form-check-label {
+  font-family: 'DynaPuff', cursive;
+  padding-left: 20px;
+  padding-top: 5px;
+}
+
+
 /* Fin formulaire inscription */
+
+@media only screen and (max-width: 600px) {
+  .slider_section .slider-img {
+   display: none;
+  }
+
+  .slider_section .mobile-slider-img {
+    display: block;
+    width: 50%;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem; 
+  }
+
+  .hero_area {
+    height: 128vh;
+    position: relative;
+  }
+
+  .slider_section .carousel_btn-container {
+    top: 95vh;
+  }
+
+  .client_section .client_detail-box {
+    margin-top: 5rem;
+  }
+
+  .info_section {
+    text-align: center;
+  }
+
+  .info_section .contact-h5 {
+    margin-top: 3rem;
+  }
+
+  .info_section .footer-img {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .info_section .social-box {
+    margin: auto;
+    width: 50%;
+  }
+
+  .info_ateliers .workshop-item {
+    margin-bottom: 2rem;
+  }
+
+  .infos-sessions table {
+    width: 100% !important;
+  }
+
+}

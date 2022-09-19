@@ -1,8 +1,8 @@
 {% extends 'admin/admin_base.html.twig' %}
 
-{% block title %}Modifier une inscription{% endblock %}
+{% block title %}Nouveau témoignage{% endblock %}
 
-{% block pageTitle %}Modifier une inscription{% endblock %}
+{% block pageTitle %}Créer un témoignage{% endblock %}
 
 {% block content %}
 <div class="content">
@@ -11,7 +11,7 @@
             <div class="col-lg-8">
                 <div class="card">
 
-                    {{ include('admin/event_registration/_form.html.twig', {'button_label': 'Modifier'}) }}
+                {{ include('admin/testimonial/_form.html.twig') }}
 
                 </div>
             </div>

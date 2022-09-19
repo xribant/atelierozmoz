@@ -4,11 +4,15 @@ namespace App\Controller;
 
 use App\Entity\EventRegistration;
 use App\Form\EventRegistrationType;
-use App\Repository\EventRegistrationRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Repository\EventRegistrationRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Flasher\Toastr\Prime\ToastrFactory;
+use Symfony\Component\Mailer\MailerInterface;
 
 #[Route('/ateliers/inscription')]
 class EventRegistrationController extends AbstractController
@@ -23,7 +27,7 @@ class EventRegistrationController extends AbstractController
     }
 
     #[Route('/new', name: 'app_event_registration_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EventRegistrationRepository $eventRegistrationRepository): Response
+    public function new(Request $request, EventRegistrationRepository $eventRegistrationRepository, MailerInterface $mailer, ToastrFactory $toastr): Response
     {
         $eventRegistration = new EventRegistration();
         $form = $this->createForm(EventRegistrationType::class, $eventRegistration);
@@ -31,6 +35,43 @@ class EventRegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $eventRegistrationRepository->add($eventRegistration, true);
+
+            $email = (new TemplatedEmail())
+                ->from('admin@atelierozmoz.be')
+                ->to($eventRegistration->getEmail())
+                // ->to(new Address($eventRegistration->getEmail()))
+                ->subject('Atelier Ozmoz: Demande d\'inscription')
+                ->htmlTemplate('mails/registrationConfirmation.html.twig')
+                ->context([
+                    'registration' => $eventRegistration,
+                ])
+            ;
+
+            try {
+
+                $mailer->send($email);
+
+                $toastr
+                    ->success('<strong>Inscription enregistrée! <br>Un e-mail de confirmation vous a été envoyé.</strong>')
+                    ->timeOut(5000)
+                    ->progressBar()
+                    ->closeButton()
+                    ->positionClass('toast-top-left')
+                    ->flash()
+                ;
+
+            } catch (TransportExceptionInterface $e) {
+                $toastr
+                    ->warning("Inscription invalide. L'adresse e-mail introduite à l'inscription n'existe pas !!!")
+                    ->timeOut(10000)
+                    ->progressBar()
+                    ->closeButton()
+                    ->positionClass('toast-top-left')
+                    ->flash()
+                ;
+
+                return $this->redirectToRoute('app_event_registration_index');
+            }
 
             return $this->redirectToRoute('app_event_registration_index', [], Response::HTTP_SEE_OTHER);
         }
