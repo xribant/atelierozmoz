@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\NewsSubscriber;
 use App\Form\NewsSubscriberType;
 use App\Repository\NewsSubscriberRepository;
+use App\Repository\TestimonialRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,8 +15,10 @@ use Flasher\Toastr\Prime\ToastrFactory;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home', methods: ['GET', 'POST'])]
-    public function index(Request $request, NewsSubscriberRepository $newsSubscriberRepository, ToastrFactory $toastr): Response
+    public function index(Request $request, NewsSubscriberRepository $newsSubscriberRepository, ToastrFactory $toastr, TestimonialRepository $testimonialRepository): Response
     {
+        $testimonials = $testimonialRepository->findAll();
+
         $subscriber = new NewsSubscriber;
 
         $form = $this->createForm(NewsSubscriberType::class, $subscriber);
@@ -25,7 +28,7 @@ class HomeController extends AbstractController
 
             $newsSubscriberRepository->add($subscriber, true);
 
-            $toastr
+                $toastr
                     ->success('<strong>Inscription confirmée. Merci</strong>')
                     ->timeOut(5000)
                     ->progressBar()
@@ -38,7 +41,8 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'testimonials' => $testimonials
         ]);
     }
 }

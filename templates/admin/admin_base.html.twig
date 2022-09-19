@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Ôzmoz Admin | {% block title %}{% endblock %}</title>
@@ -17,7 +15,6 @@
 
     <!--  Paper Dashboard core CSS    -->
     <link href="{{ asset('assets/admin/css/paper-dashboard.css') }}" rel="stylesheet"/>
-
 
     <!--  Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -43,13 +40,6 @@
 			</div>
 	    	<div class="sidebar-wrapper">
 				<div class="user">
-	                <div class="photo">
-					{% if app.user.imageName %}
-						 <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="">
-					{% else %}
-	                    <img src="{{ asset('build/face.png') }}" alt="" />
-					{% endif %}
-	                </div>
 	                <div class="info">
 	                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
 	                        <span>
@@ -61,12 +51,6 @@
 
 	                    <div class="collapse" id="collapseExample">
 	                        <ul class="nav">
-	                            <li>
-									<a href="#profile">
-										<span class="sidebar-mini">Mp</span>
-										<span class="sidebar-normal">Mon Profil</span>
-									</a>
-								</li>
 	                            <li>
 									<a href="{{ path('app_logout') }}">
 										<span class="sidebar-mini">OUT</span>
@@ -97,6 +81,18 @@
 	                        <p>Ateliers</p>
 	                    </a>
 	                </li>
+					<li {% if active_menu == 'localisations' %}class="active"{% endif %}>
+	                    <a href="{{ path('app_workshop_location_index') }}">
+	                        <i class="ti-location-pin"></i>
+	                        <p>Localisations</p>
+	                    </a>
+	                </li>
+					<li {% if active_menu == 'testimonial' %}class="active"{% endif %}>
+	                    <a href="{{ path('app_testimonial_index') }}">
+	                        <i class="ti-heart"></i>
+	                        <p>Témoignages</p>
+	                    </a>
+	                </li>
 					<li {% if active_menu == 'agenda' %}class="active"{% endif %}>
 	                    <a href="{{ path('app_event_index') }}">
 	                        <i class="ti-calendar"></i>
@@ -121,14 +117,14 @@
 	                        <ul class="nav">
 								<li {% if active_menu == 'newsletter_subscribers' %}class="active"{% endif %}>
 									<a href="{{ path('app_news_subscriber_index') }}">
-										<span class="sidebar-mini">LI</span>
-										<span class="sidebar-normal">Lecteurs inscrits</span>
+										<span class="sidebar-mini">AB</span>
+										<span class="sidebar-normal">Abonnés</span>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<span class="sidebar-mini">NM</span>
-										<span class="sidebar-normal">News Management</span>
+										<span class="sidebar-mini">EV</span>
+										<span class="sidebar-normal">Envoi</span>
 									</a>
 								</li>
 	                        </ul>
@@ -241,19 +237,10 @@
 	<!-- Paper Dashboard PRO Core javascript and methods for Demo purpose -->
 	<script src="{{ asset('assets/admin/js/paper-dashboard.js') }}"></script>
 
-	<!-- Paper Dashboard PRO DEMO methods, don't include it in your project! -->
-	<script src="{{ asset('assets/admin/js/demo.js') }}"></script>
-
 	{% block javascripts %}
 	{% endblock %}
 
     <script type="text/javascript">
-        $().ready(function(){
-			// Init Sliders
-            demo.initFormExtendedSliders();
-            // Init DatetimePicker
-            demo.initFormExtendedDatetimepickers();
-        });
 
             $(function () {
                 $('.datepicker').datetimepicker({

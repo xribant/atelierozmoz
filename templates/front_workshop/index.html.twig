@@ -13,14 +13,14 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 d-flex justify-content-start" data-aos="fade-right">
-              <h2>
+              <h1>
                   {{ workshop.title }}
-              </h2>
+              </h1>
         </div>   
       </div>
       <div class="row mt-5 mb-5">
         <div class="col-sm d-flex justify-content-start" data-aos="fade-right">
-          <img src="{{ vich_uploader_asset(workshop, 'imageFile') }}" alt="Atelier">
+          <img class="workshop-img" src="{{ vich_uploader_asset(workshop, 'imageFile') }}" alt="Atelier">
         </div>
         <div class="col-sm" data-aos="fade-left">
           <div class="row  d-flex pl-2 text-left">
@@ -37,13 +37,44 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12" data-aos="fade-right">
-          <h2 class="mt-5 mb-5">
+          <h1 class="mt-2 mb-5">
             Les prochaines sessions
-          </h2>
+          </h1>
         </div>
       </div>
-      <div class="row d-flex">
-            Pas de sessions planifiées pour le moment
+      <div class="row">
+        <div class="col-lg-10">
+        <table class="table table-striped">
+          <tbody> 
+          {% for event in workshop.events %}
+              <tr>
+                  <td>
+                      {{ event.startAt|format_datetime('medium', 'short',locale='fr') }} 
+                  </td>
+                  <td>
+                      {{ event.title }}
+                  </td>
+                  <td>
+                      {% if event.soldout == true %}
+                        <span class="btn-soldout"><i class="fa-solid fa-lock"></i> Complet</span>
+                      {% else %} 
+                        <a href="{{ path('app_front_workshop_registration', {'workshop_slug': event.workshop.slug ,'event_slug': event.slug }) }}"><i class="fa-solid fa-lock-open"></i> S'inscrire</a>
+                      {% endif %}
+                  </td>
+              </tr>
+          {% else %}
+              <tr>
+                <span>Pas de sessions planifiées pour le moment</span>
+              </tr>
+          {% endfor %}
+           </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-10">
+          <a class="btn-soldout mt-3" href="{{ path('app_about') }}">Retour</a>
+        </div>
       </div>
     </div>
   </section>
