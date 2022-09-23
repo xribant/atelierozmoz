@@ -61,7 +61,7 @@ class FrontWorkshopRegistrationController extends AbstractController
                     ->timeOut(5000)
                     ->progressBar()
                     ->closeButton()
-                    ->positionClass('toast-top-left')
+                    ->positionClass('toast-top-center')
                     ->flash()
                 ;
             
@@ -71,7 +71,7 @@ class FrontWorkshopRegistrationController extends AbstractController
                     ->timeOut(10000)
                     ->progressBar()
                     ->closeButton()
-                    ->positionClass('toast-top-left')
+                    ->positionClass('toast-top-center')
                     ->flash()
                 ;
 

@@ -540,7 +540,38 @@ a:focus {
 
 /* end about section */
 
-/* client section */
+/* Infos Fomrations section */
+
+.infos-formations h1 {
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.infos-formations p {
+  font-family: 'DynaPuff', cursive;
+  font-size: 1.25rem;
+}
+
+.infos-formations .card {
+  border-radius: 10px;
+  background-color: #3ca4a8;
+}
+
+.infos-formations ul.formations {
+  list-style-type: none;
+  color: #ffffff;
+  font-family: 'DynaPuff', cursive;
+}
+
+.infos-formations ul.formations li {
+  padding: 1rem;
+}
+
+.infos-formations ul.formations i {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+/* End Infos Formations */
 
 /* portfolio section */
 .portfolio_section {
@@ -1398,11 +1429,12 @@ a:focus {
 .infos-sessions .card {
   border-radius: 10px;
   border: solid 3px #3ca4a8;
+  margin-bottom: 2rem;
 }
 
 .infos-sessions .event-img {
   border-radius: 8px 8px 0 0; 
-  height: 15vw;
+  height: 20rem;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1597,6 +1629,55 @@ a:focus {
   padding-top: 5px;
 }
 
+/* Début Contact Section */ 
+
+.contact-section {
+  color: #fefeff;
+}
+
+.contact-section h1 {
+  font-family: 'Luckiest Guy', cursive;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+
+.contact-section h1 span {
+  color: #010106;
+}
+
+.contact-section p {
+  font-family: 'DynaPuff', cursive;
+  margin: 25px 0 35px 0;
+}
+
+.contact-section img {
+  width: 30rem;
+  height: auto;
+}
+
+.contact-section .form-label {
+  font-family: 'DynaPuff', cursive;
+  font-size: 1.25rem;
+  color: #000000;
+}
+
+.contact-section button {
+  background-color: #3ca4a8;
+  display: inline-block;
+  padding: 9px 35px;
+  border: 2px solid #fefeff;
+  color: #fefeff;
+  border-radius: 35px;
+}
+
+.contact-section button:hover {
+  background-color: #fefeff;
+  color: #010106;
+}
+
+/* Fin Contact Section */
+
 
 /* Fin formulaire inscription */
 
@@ -1650,6 +1731,10 @@ a:focus {
 
   .infos-sessions table {
     width: 100% !important;
+  }
+
+  .contact-section img {
+    display: none;
   }
 
 }
