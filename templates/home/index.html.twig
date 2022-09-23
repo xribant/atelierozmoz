@@ -50,7 +50,7 @@
               <div class="col-md-3 offset-md-2">
                 <div class="slider_detail">
                   <div class="d-flex justify-content-center"> 
-                    <img class="mobile-slider-img" src="{{ asset('build/newsletter.png') }}" alt="slider-image">
+                    <img class="mobile-slider-img" src="{{ asset('build/newsletter_logo_white.png') }}" alt="slider-image">
                   </div>
                     <h1>
                       NEWS
@@ -77,7 +77,7 @@
               </div>
               <div class="col-md-7">
                 <div class="slider_img-box">
-                  <img class="slider-img" src="{{ asset('build/newsletter.png') }}" alt="">
+                  <img class="slider-img" src="{{ asset('build/newsletter_logo_white.png') }}" alt="">
                 </div>
               </div>
             </div>
@@ -112,7 +112,7 @@
       <div class="row">
         <div class="col-md-8">
           <div class="portfolio_img-box">
-            <img src="{{ asset('build/ozmoz-portfolio-5.png') }}" alt="">
+            <img src="{{ asset('build/ozmoz-portfolio-6.png') }}" alt="">
           </div>
         </div>
         <div class="col-md-4">
@@ -130,9 +130,29 @@
             <img src="{{ asset('build/ozmoz-portfolio-4.png') }}" alt="">
           </div>
         </div>
+        <div class="col-md-8">
+          <div class="portfolio_img-box">
+            <img src="{{ asset('build/ozmoz-portfolio-8.png') }}" alt="">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="portfolio_img-box">
+            <img src="{{ asset('build/ozmoz-portfolio-9.png') }}" alt="">
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="portfolio_img-box">
+            <img src="{{ asset('build/ozmoz-portfolio-10.png') }}" alt="">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="portfolio_img-box">
+            <img src="{{ asset('build/ozmoz-portfolio-11.png') }}" alt="">
+          </div>
+        </div>
          <div class="col-md-12">
           <div class="portfolio_img-box">
-            <img src="{{ asset('build/ozmoz-portfolio-3.png') }}" alt="">
+            <img src="{{ asset('build/ozmoz-portfolio-7.png') }}" alt="">
           </div>
         </div>
       </div>
@@ -146,18 +166,14 @@
     <h2 class="">
       Ce qu'ils en disent...
     </h2>
+      
 
     <div class="container">
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
             <div class="carousel-inner">
                 {% for testimonial in testimonials %}
-                <div class="carousel-item {% if testimonial.id == 1 %}active{% endif %}">
+                <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
                     <div class="row">
                         <div class="col-md-3">
                           <div class="client_img-box">

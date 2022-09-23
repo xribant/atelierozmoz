@@ -8,9 +8,17 @@
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+  
+  <meta name="description" content="Ôzmoz, l'art de se créer, ce sont des formations, des stages, des ateliers pour les adultes, les ados et les enfants." />
+  <meta name="author" content="Sabrina Bailliez" />
+
+  <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+  <meta property="og:site_name" content="Ôzmoz" /> <!-- website name -->
+  <meta property="og:site" content="https://www.atelierozmoz.be" /> <!-- website link -->
+  <meta property="og:title" content="Ateliers Ôzmoz"/> <!-- title shown in the actual shared post -->
+  <meta property="og:description" content="Ôzmoz, l'art de se créer, ce sont des formations, des stages, des ateliers pour les adultes, les ados et les enfants." /> <!-- description shown in the actual shared post -->
+  <meta property="og:image" content="{{ asset('build/ozmoz-logo-blue.png') }}" /> <!-- image link, make sure it's jpg -->
+  <meta property="og:url" content="https://www.atelierozmoz.be" /> <!-- where do you want your post to link to -->
 
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('build/apple-touch-icon.png') }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('build/favicon-32x32.png') }}">
@@ -72,7 +80,8 @@
                     <div class="overlay-content">
                       <a href="{{ path('app_home') }}">ACCUEIL</a>
                       <a href="{{ path('app_about') }}">A PROPOS D'ÔZMOZ</a>
-                      <a href="{{ path('app_agenda') }}">AGENDA</a>
+                      <a href="{{ path('app_agenda') }}">AGENDA DES ATELIERS</a>
+                      <a href="{{ path('app_training') }}">FORMATIONS</a>
                       <a href="{{ path('app_contact') }}">CONTACT</a>
                     </div>
 

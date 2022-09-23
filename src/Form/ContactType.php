@@ -19,11 +19,10 @@ class ContactType extends AbstractType
         $builder
         ->add('name', TextType::class, [
             'required' => true,
-            'label' => false,
+            'label' => 'Nom et prénom',
             'attr' => [
-                'class' => 'mt-3',
-                'placeholder' => 'Nom',
                 'size' => 30,
+                'class' => 'form-control',
             ],
             'constraints' => [
                 new NotBlank(message: 'Veuillez entrer votre nom')
@@ -31,10 +30,10 @@ class ContactType extends AbstractType
         ])
         ->add('email', EmailType::class, [
             'required' => true,
-            'label' => false,
+            'label' => 'E-Mail',
             'attr' => [
-                'placeholder' => 'E-Mail',
                 'size' => 30,
+                'class' => 'form-control',
             ],
             'constraints' => [
                 new NotBlank(message: 'Veuillez entrer votre e-mail'),
@@ -43,9 +42,8 @@ class ContactType extends AbstractType
         ])
         ->add('message', TextareaType::class, [
             'required' => true,
-            'label' => false,
+            'label' => 'Votre message',
             'attr' => [
-                'placeholder' => 'Votre message',
                 'cols' => 30,
                 'rows' => 10
             ],

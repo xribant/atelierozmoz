@@ -85,7 +85,7 @@ class Event
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $imageName;
 
-    #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventRegistration::class)]
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventRegistration::class, orphanRemoval: true)]
     private $eventRegistrations;
 
     #[ORM\ManyToOne(inversedBy: 'events')]
