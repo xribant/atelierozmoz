@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formations
+{% endblock %}
+
+{% block bodyType %}<body class="sub_page">{% endblock %}
+{% block content %}
+</body>
+</div>
+
+<!-- Prochaines sessions -->
+<section class="infos-formations">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12" data-aos="fade-right">
+				<h1 class="mt-5 mb-5">
+					<i class="fa-solid fa-graduation-cap"></i>
+					Les formations...
+				</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-md-12" data-aos="fade-up">
+
+				<p>
+					Les formations sont construites sur mesure et peuvent être organisées à la demande.
+				</p>
+				<p>
+					Elles se veulent dynamiques et participatives. De nombreux exercices sont proposés pour que les participants puissent intégrer les nombreuses notions.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Fin prochaines sessions -->
+
+<!-- Liste des formations -->
+  <section class="infos-sessions"> 
+    <div class="container">
+      <div class="row mt-5">
+      
+           {% for training in trainings %}
+              <div class="col-lg-4 col-md-6 col-sm-1"> 
+                <div class="card">
+                  <div class="event-img" style="background-image: url('{{ vich_uploader_asset(training, 'imageFile') }}');"></div>
+                  <div class="card-body">
+                    <h2 class="card-title">{{ training.title }}</h2>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal{{ training.uid }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-circle-info"></i> Description</h5>
+                            </div>
+                            <div class="modal-body">
+                              {{ training.description|raw }}
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ path('app_quote_request', {'slug': training.slug}) }}"><i class="fa-solid fa-file-lines"></i> Devis</a>
+                       	{% if training.description == true %}
+                        	<a class="ml-3" href="" data-toggle="modal" data-target="#exampleModal{{ training.uid }}"><i class="fa-solid fa-circle-info"></i> Détails</a>
+                      	{% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% else %}  
+              <div class="col-lg-4 col-md-6 col-sm-1"> 
+                Pas d'évènements planifiés
+              </div>
+            {% endfor %}
+       
+      </div>
+    </div>
+  </section>
+  <!-- Fin liste des formations -->
+
+{% endblock %}

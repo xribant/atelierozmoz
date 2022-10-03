@@ -1,0 +1,59 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Formations{% endblock %}
+
+{% block pageTitle %}Gestion des formations{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="toolbar">
+                                <!--Here you can write extra buttons/actions for the toolbar-->
+                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_training_new') }}">Créer une formation</a>
+                            </div>
+                            <table id="adminUsers-table" class="table">
+                                <thead>
+                                    <th>#</th>
+                                    <th>Titre</th>
+                                    <th>Création</th>
+                                    <th>Modifié le</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                {% for training in trainings %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ training.title }}</td>
+                                    <td>{{ training.createdAt ? training.createdAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>{{ training.updatedAt ? training.updatedAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>
+                                        <div>
+                                                <a rel="tooltip" title="Modifier" class="btn btn-simple btn-warning btn-icon" href="{{ path('app_training_edit', {'uid': training.uid}) }}">
+                                                    <i class="ti-pencil-alt"></i>
+                                                </a>
+                                                <form style="display: inline-block;" method="post" action="{{ path('app_training_delete', {'uid': training.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cette formation?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ training.uid) }}">
+                                                    <button rel="tooltip" title="Supprimer" class="btn btn-simple btn-danger btn-icon"><i class="ti-close"></i></button>
+                                                </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">Pas de formations</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!--  end card  -->
+                </div> <!-- end col-md-12 -->
+            </div> <!-- end row -->
+        </div>
+    </div>
+
+{% endblock %}

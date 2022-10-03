@@ -54,8 +54,6 @@ class ContactController extends AbstractController
                 echo $e->getMessage();
 
             }
-
-            $mailer->send($email);
         }
 
         return $this->render('contact/index.html.twig', [
