@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande de devis pour la formation {{ training.title }}{% endblock %}
+
+{% block bodyType %}<body class="sub_page">{% endblock %}
+
+{% block content %}
+
+ </div>
+
+  <!-- Formulaire inscription -->
+  <section class="front-registration"> 
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-12" data-aos="fade-right">
+          <h2 class="mt-5 mb-5">
+            Demande de devis pour "{{ training.title }}"
+          </h2>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-10" data-aos="fade-up">
+          <div class="card">
+              
+              {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+              {{ form_row(form._token) }}
+                  <form id="quoteRequestForm" action="" method="post">
+                      <div class="card-content">
+                          <div class="row">
+                    
+                              <div class="col-lg-6">
+                                  <div class="form-group col-lg-12 {% if form_errors(form.firstName) %}has-error{% endif %}">
+                                      <label class="control-label">
+                                          Prénom<star>*</star>
+                                      </label>
+                                      {{ form_row(form.firstName) }}
+                                  </div>
+                              </div>    
+                              <div class="col-lg-6">
+                                  <div class="form-group col-lg-12 {% if form_errors(form.lastName) %}has-error{% endif %}">
+                                      <label class="control-label">
+                                          Nom<star>*</star>
+                                      </label>
+                                      {{ form_row(form.lastName) }}
+                                  </div>
+                              </div>    
+                              <div class="col-lg-6">
+                                  <div class="form-group col-lg-12 {% if form_errors(form.email) %}has-error{% endif %}">
+                                      <label class="control-label">
+                                          E-Mail<star>*</star>
+                                      </label>
+                                      {{ form_row(form.email) }}
+                                  </div>
+                              </div>    
+                               <div class="col-lg-6">
+                                  <div class="form-group col-lg-12 {% if form_errors(form.phone) %}has-error{% endif %}">
+                                      <label class="control-label">
+                                          Téléphone<star>*</star>
+                                      </label>
+                                      {{ form_row(form.phone) }}
+                                  </div>
+                              </div>  
+                              <div class="col-lg-6">
+                                  <div class="form-group col-lg-12 {% if form_errors(form.company) %}has-error{% endif %}">
+                                      <label class="control-label">
+                                          Société
+                                      </label>
+                                      {{ form_row(form.company) }}
+                                  </div>
+                              </div>    
+                              <div class="col-lg-6">
+                                  <div class="form-group col-lg-12 {% if form_errors(form.vat) %}has-error{% endif %}">
+                                      <label class="control-label">
+                                          TVA
+                                      </label>
+                                      {{ form_row(form.vat) }}
+                                  </div>
+                              </div>    
+                               <div class="col-lg-3">
+                                  <div class="form-group col-lg-12 {% if form_errors(form.nbr_attendees) %}has-error{% endif %}">
+                                      <label class="control-label">
+                                          Participants<star>*</star>
+                                      </label>
+                                      {{ form_row(form.nbr_attendees) }}
+                                  </div>
+                              </div>   
+                               <div class="col-lg-12">
+                                  <div class="form-group col-lg-12 {% if form_errors(form.message) %}has-error{% endif %}">
+                                      <label class="control-label">
+                                          Message<star>*</star>
+                                      </label>
+                                      {{ form_row(form.message) }}
+                                  </div>
+                              </div> 
+                              {{ form_row(form.recaptcha) }}
+                             <div class="col-lg-12">
+                                  <div class="category mb-3"><star>*</star>Champs obligatoires</div>
+                                    <div class="col-lg-12">
+                                      <button class="btn-subscription">Envoyer</button>
+                                      <a class="back-btn ml-2" href="{{ path('app_agenda') }}">Annuler</a>
+                                    </div>
+                              </div>
+
+                          </div>
+                      </div>
+                  </form>
+              {{ form_end(form) }}
+                
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </section>
+  <!-- Fin Formulaire inscription -->
+
+{% endblock %}
+
+
+
+
