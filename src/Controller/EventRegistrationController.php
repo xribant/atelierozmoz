@@ -13,6 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Flasher\Toastr\Prime\ToastrFactory;
 use Symfony\Component\Mailer\MailerInterface;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 #[Route('/admin/ateliers/inscriptions')]
 class EventRegistrationController extends AbstractController
@@ -107,6 +110,54 @@ class EventRegistrationController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$eventRegistration->getUid(), $request->request->get('_token'))) {
             $eventRegistrationRepository->remove($eventRegistration, true);
         }
+
+        return $this->redirectToRoute('app_event_registration_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/export', name: 'app_event_registration_export', methods: ['GET'])]
+    public function export(EventRegistrationRepository $eventRegistrationRepository): Response
+    {
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setTitle("Inscriptions aux ateliers");
+
+        $sheet->setCellValue('A1', 'Nom');
+        $sheet->setCellValue('B1', 'Prénom');
+        $sheet->setCellValue('C1', 'E-Mail');
+        $sheet->setCellValue('D1', 'Atelier');
+        $sheet->setCellValue('E1', 'Adresse');
+        $sheet->setCellValue('F1', 'Code Postal');
+        $sheet->setCellValue('G1', 'Localité');
+        $sheet->setCellValue('H1', 'Date inscription');
+
+        $registrations = $eventRegistrationRepository->findAll();
+
+        $row = 2;
+        foreach ($registrations as $registration) {
+            $sheet->setCellValue('A'.$row, $registration->getLastName());
+            $sheet->setCellValue('B'.$row, $registration->getFirstName());
+            $sheet->setCellValue('C'.$row, $registration->getEmail());
+            $sheet->setCellValue('D'.$row, $registration->getEvent()->getWorkshop()->getTitle());
+            $sheet->setCellValue('E'.$row, $registration->getAddress());
+            $sheet->setCellValue('F'.$row, $registration->getPostalCode());
+            $sheet->setCellValue('G'.$row, $registration->getCity());
+            $sheet->setCellValue('H'.$row, $registration->getCreatedAt()->format('d-m-Y H:i:s'));
+            $row++;
+        }
+
+
+        $writer = new Xlsx($spreadsheet);
+
+        // Create a Temporary file in the system
+        $fileName = 'liste_inscriptions_'.date("d_m_Y").'.xlsx';
+        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
+ 
+        // Create the excel file in the tmp directory of the system
+        $writer->save($temp_file);
+ 
+        // Return the excel file as an attachment
+        return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
 
         return $this->redirectToRoute('app_event_registration_index', [], Response::HTTP_SEE_OTHER);
     }
