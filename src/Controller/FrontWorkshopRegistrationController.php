@@ -41,10 +41,9 @@ class FrontWorkshopRegistrationController extends AbstractController
                 $newsSubscriberRepository->add($newsletterMember, true);
             }
             
-            $email = (new TemplatedEmail())
+            $custConfirmEmail = (new TemplatedEmail())
                 ->from('admin@atelierozmoz.be')
                 ->to($eventRegistration->getEmail())
-                // ->to(new Address($eventRegistration->getEmail()))
                 ->subject('Atelier Ozmoz: Demande d\'inscription')
                 ->htmlTemplate('mails/registrationConfirmation.html.twig')
                 ->context([
@@ -52,9 +51,20 @@ class FrontWorkshopRegistrationController extends AbstractController
                 ])
             ;
 
+            $notifAdminEmail = (new TemplatedEmail())
+                ->from('admin@atelierozmoz.be')
+                ->to('info@atelierozmoz.be')
+                ->subject('Atelier Ozmoz: Notification d\'inscription')
+                ->htmlTemplate('mails/registrationNotification.html.twig')
+                ->context([
+                    'registration' => $eventRegistration,
+                ])
+            ;
+
             try {
 
-                $mailer->send($email);
+                $mailer->send($custConfirmEmail);
+                $mailer->send($notifAdminEmail);
 
                 $toastr
                     ->success('<strong>Inscription enregistrée! <br>Un e-mail de confirmation vous a été envoyé.</strong>')

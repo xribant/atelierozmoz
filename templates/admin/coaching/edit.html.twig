@@ -1,0 +1,22 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Modifier un coaching{% endblock %}
+
+{% block pageTitle %}Modifier un coaching{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <div class="card">
+
+                    {{ include('admin/coaching/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

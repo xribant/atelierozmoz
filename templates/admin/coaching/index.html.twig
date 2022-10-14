@@ -1,0 +1,59 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Accompagnement/Coaching{% endblock %}
+
+{% block pageTitle %}Gestion des accompagnements/Coaching{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="toolbar">
+                                <!--Here you can write extra buttons/actions for the toolbar-->
+                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_coaching_new') }}">Créer un coaching</a>
+                            </div>
+                            <table id="adminUsers-table" class="table">
+                                <thead>
+                                    <th>#</th>
+                                    <th>Titre</th>
+                                    <th>Création</th>
+                                    <th>Modifié le</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                {% for coaching in coachings %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ coaching.title }}</td>
+                                    <td>{{ coaching.createdAt ? coaching.createdAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>{{ coaching.updatedAt ? coaching.updatedAt|format_datetime('medium', 'short',locale='fr') }}</td>
+                                    <td>
+                                        <div>
+                                                <a rel="tooltip" title="Modifier" class="btn btn-simple btn-warning btn-icon" href="{{ path('app_coaching_edit', {'uid': coaching.uid}) }}">
+                                                    <i class="ti-pencil-alt"></i>
+                                                </a>
+                                                <form style="display: inline-block;" method="post" action="{{ path('app_coaching_delete', {'uid': coaching.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cette formation?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ coaching.uid) }}">
+                                                    <button rel="tooltip" title="Supprimer" class="btn btn-simple btn-danger btn-icon"><i class="ti-close"></i></button>
+                                                </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">Pas d'accompagnement</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!--  end card  -->
+                </div> <!-- end col-md-12 -->
+            </div> <!-- end row -->
+        </div>
+    </div>
+
+{% endblock %}
