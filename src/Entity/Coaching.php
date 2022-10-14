@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use App\Repository\TrainingRepository;
+use App\Repository\CoachingRepository;
+use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -10,13 +11,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use DateTime;
 
-#[ORM\Entity(repositoryClass: TrainingRepository::class)]
+#[ORM\Entity(repositoryClass: CoachingRepository::class)]
 /**
  * @Vich\Uploadable()
  */
-class Training
+class Coaching
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -44,8 +44,8 @@ class Training
     #[ORM\Column(length: 255)]
     private ?string $uid = null;
 
-     /**
-     * @Vich\UploadableField(mapping="training_image", fileNameProperty="imageName")
+    /**
+     * @Vich\UploadableField(mapping="coaching_image", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize="1M",
      *     maxSizeMessage="La taille du fichier doit être inférieure à 1 Mb",
@@ -60,7 +60,8 @@ class Training
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->created_at = new DateTime();
         $this->updated_at = new DateTime();
         $this->uid = uniqid();
@@ -152,7 +153,7 @@ class Training
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
      */
-    public function setImageFile(?File $imageFile): Training
+    public function setImageFile(?File $imageFile): Coaching
     {
         $this->imageFile = $imageFile;
 

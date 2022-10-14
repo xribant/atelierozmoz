@@ -13,6 +13,10 @@ vich_uploader:
         training_image:
             uri_prefix: /images/training
             upload_destination: '%kernel.project_dir%/public/images/training'
+
+        coaching_image:
+            uri_prefix: /images/coaching
+            upload_destination: '%kernel.project_dir%/public/images/coaching'
         
         event_image:
             uri_prefix: /images/events

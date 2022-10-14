@@ -495,6 +495,13 @@ a:focus {
   color: #fefeff;
 }
 
+.info_ateliers .workshop-img {
+    border-radius: 8px 8px 0 0; 
+    height: 20rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .info_ateliers h1 {
   margin-top: 2rem;
   margin-bottom: 3rem;

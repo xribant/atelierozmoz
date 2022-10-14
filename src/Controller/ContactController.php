@@ -29,6 +29,7 @@ class ContactController extends AbstractController
             $email = (new TemplatedEmail())
                 ->from('admin@atelierozmoz.be')
                 ->to(new Address('info@atelierozmoz.be'))
+                // ->to(new Address('xribant@gmail.com'))
                 ->subject('[atelierozmoz.be]: Formulaire de contact')
                 ->htmlTemplate('mails/contactForm.html.twig')
                 ->context([

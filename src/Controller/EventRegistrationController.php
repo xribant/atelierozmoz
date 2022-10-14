@@ -14,7 +14,7 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Flasher\Toastr\Prime\ToastrFactory;
 use Symfony\Component\Mailer\MailerInterface;
 
-#[Route('/ateliers/inscription')]
+#[Route('/admin/ateliers/inscriptions')]
 class EventRegistrationController extends AbstractController
 {
     #[Route('/', name: 'app_event_registration_index', methods: ['GET'])]
@@ -39,7 +39,6 @@ class EventRegistrationController extends AbstractController
             $email = (new TemplatedEmail())
                 ->from('admin@atelierozmoz.be')
                 ->to($eventRegistration->getEmail())
-                // ->to(new Address($eventRegistration->getEmail()))
                 ->subject('Atelier Ozmoz: Demande d\'inscription')
                 ->htmlTemplate('mails/registrationConfirmation.html.twig')
                 ->context([

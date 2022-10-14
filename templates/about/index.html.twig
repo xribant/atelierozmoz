@@ -62,7 +62,7 @@
             {% for workshop in workshops %}
 
             <div class="col-md-4 workshop-item" data-aos="fade-up">
-                <a href="{{ path('app_front_workshop_details', {'slug': workshop.slug} ) }}" class="d-flex justify-content-center align-items-center" style="background-image: url('{{ vich_uploader_asset(workshop, 'imageFile') }}');">
+                <a href="{{ path('app_front_workshop_details', {'slug': workshop.slug} ) }}" class="d-flex justify-content-center align-items-center workshop-img" style="background-image: url('{{ vich_uploader_asset(workshop, 'imageFile') }}');">
                   <div class="icon d-flex justify-content-center align-items-center">
                     <i class="fa-solid fa-link"></i>
                   </div>

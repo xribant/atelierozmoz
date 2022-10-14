@@ -94,6 +94,12 @@
 								<p>Formations</p>
 							</a>
 						</li>
+						<li {% if active_menu == 'coaching' %} class="active" {% endif %}>
+							<a href="{{ path('app_coaching_index') }}">
+								<i class="ti-comments"></i>
+								<p>Coaching</p>
+							</a>
+						</li>
 						<li {% if active_menu == 'localisations' %} class="active" {% endif %}>
 							<a href="{{ path('app_workshop_location_index') }}">
 								<i class="ti-location-pin"></i>
