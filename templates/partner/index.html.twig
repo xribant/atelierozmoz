@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partenaires{% endblock %}
+
+{% block bodyType %}<body class="sub_page">{% endblock %}
+
+{% block content %}
+
+ </div>
+
+  <!-- Prochaines sessions -->
+  <section class="infos-sessions"> 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" data-aos="fade-right">
+          <h1 class="mt-5 mb-5">
+            Mes partenaires...
+          </h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Fin prochaines sessions -->
+
+<section class="client_section layout_padding partner">
+    <div class="container">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-3">
+                          <div class="client_img-box">
+                            <img src="{{ asset('build/logo-creapicto.png') }}" alt="">
+                          </div>
+                        </div>
+                        <div class="col-md-9">
+                          <div class="client_detail-box">
+                            <h5>
+                              Créapicto (Christophe Vanderroost / Virginie Graux)
+                            </h5>
+                            <p>
+                             Instituteur Primaire, Directeur d'Ecole Fondamentale puis Conseiller Pédagogique, je me suis réorienté en septembre 2019 pour devenir Formateur Indépendant en Education*. 
+                            </p>
+                            <a href="https://www.creapicto.com/" target="_blank"><i class="fa-solid fa-circle-info"></i> Infos</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                          <div class="client_img-box">
+                            <img src="{{ asset('build/logo-jet-encre.png') }}" alt="">
+                          </div>
+                        </div>
+                        <div class="col-md-9">
+                          <div class="client_detail-box">
+                            <h5>
+                              Ecole du jet d'encre (Anne-Marie Jobin)
+                            </h5>
+                            <p>
+                                Si comme moi, vous avez parfois l’impression de ne plus savoir où vous en êtes, que vous avez besoin de prendre du temps pour vous et de vous retrouver, le Journal Créatif est une voie à explorer !
+                            </p>
+                             <a href="https://journalcreatif.com/" target="_blank"><i class="fa-solid fa-circle-info"></i> Infos</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+             
+            </div>
+        </div>
+     
+    </div>
+  </section>
+
+{% endblock %}
+
+
+
