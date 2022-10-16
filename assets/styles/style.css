@@ -1685,6 +1685,25 @@ a:focus {
 
 /* Fin Contact Section */
 
+/* Partner Section */
+
+.partner a {
+  font-family: 'DynaPuff', cursive;
+  display: inline-block;
+  padding: 3px 15px;
+  border: 2px solid #3ca4a8;
+  background-color: #3ca4a8;
+  color: #ffffff;
+  border-radius: 25px;
+}
+
+.partner a:hover {
+  background-color: #fefeff;
+  color: #010106;
+}
+
+/* End Partner */
+
 
 /* Fin formulaire inscription */
 
