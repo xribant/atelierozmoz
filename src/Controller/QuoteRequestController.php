@@ -29,7 +29,7 @@ class QuoteRequestController extends AbstractController
             $quoteRequest = $form->getData();
 
             $email = (new TemplatedEmail())
-                ->from('admin@atelierozmoz.be')
+                ->from('no-reply@atelierozmoz.be')
                 ->to(new Address('info@atelierozmoz.be'))
                 // ->to(new Address('xribant@gmail.com'))
                 ->subject('[atelierozmoz.be]: Formulaire de contact')

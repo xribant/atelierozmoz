@@ -40,7 +40,7 @@ class EventRegistrationController extends AbstractController
             $eventRegistrationRepository->add($eventRegistration, true);
 
             $email = (new TemplatedEmail())
-                ->from('admin@atelierozmoz.be')
+                ->from('no-reply@atelierozmoz.be')
                 ->to($eventRegistration->getEmail())
                 ->subject('Atelier Ozmoz: Demande d\'inscription')
                 ->htmlTemplate('mails/registrationConfirmation.html.twig')

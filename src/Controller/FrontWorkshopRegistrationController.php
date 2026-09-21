@@ -42,7 +42,7 @@ class FrontWorkshopRegistrationController extends AbstractController
             }
             
             $custConfirmEmail = (new TemplatedEmail())
-                ->from('admin@atelierozmoz.be')
+                ->from('no-reply@atelierozmoz.be')
                 ->to($eventRegistration->getEmail())
                 ->subject('Atelier Ozmoz: Demande d\'inscription')
                 ->htmlTemplate('mails/registrationConfirmation.html.twig')
@@ -52,7 +52,7 @@ class FrontWorkshopRegistrationController extends AbstractController
             ;
 
             $notifAdminEmail = (new TemplatedEmail())
-                ->from('admin@atelierozmoz.be')
+                ->from('no-reply@atelierozmoz.be')
                 ->to('info@atelierozmoz.be')
                 ->subject('Atelier Ozmoz: Notification d\'inscription')
                 ->htmlTemplate('mails/registrationNotification.html.twig')
@@ -67,17 +67,17 @@ class FrontWorkshopRegistrationController extends AbstractController
                 $mailer->send($notifAdminEmail);
 
                 $toastr
-                    ->success('<strong>Inscription enregistrée! <br>Un e-mail de confirmation vous a été envoyé.</strong>')
-                    ->timeOut(5000)
+                    ->success('<h5>Inscription enregistrée! <br>Un e-mail de confirmation vous a été envoyé.</h5>')
+                    ->timeOut(10000)
                     ->progressBar()
                     ->closeButton()
-                    ->positionClass('toast-top-center')
+                    ->positionClass('toast-top-right')
                     ->flash()
                 ;
             
             } catch (TransportExceptionInterface $e) {
                 $toastr
-                    ->warning("Inscription invalide. L'adresse e-mail introduite à l'inscription n'existe pas !!!")
+                    ->warning($e->getMessage())
                     ->timeOut(10000)
                     ->progressBar()
                     ->closeButton()
