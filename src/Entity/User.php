@@ -12,9 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-/**
- * @Vich\Uploadable()
- */
+#[Vich\Uploadable]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -51,17 +49,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $uid;
 
-    /**
-     * @Vich\UploadableField(mapping="user_image", fileNameProperty="imageName")
-     * @Assert\File(
-     *     maxSize="1M",
-     *     maxSizeMessage="La taille du fichier doit être inférieure à 1 Mb",
-     *     mimeTypes={"image/jpeg", "image/jpg", "image/png"},
-     *     mimeTypesMessage = "Fichiers .jpeg ou .png uniquement"
-     * )
-     * @var File|null
-     */
-    private $imageFile;
+    #[Vich\UploadableField(mapping: 'user_image', fileNameProperty: 'imageName')]
+    #[Assert\File(
+        maxSize: '1M',
+        maxSizeMessage: 'La taille du fichier doit être inférieure à 1 Mb',
+        mimeTypes: ['image/jpeg', 'image/jpg', 'image/png'],
+        mimeTypesMessage: 'Fichiers .jpeg ou .png uniquement',
+    )]
+    private ?File $imageFile = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $imageName;
@@ -135,7 +130,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;

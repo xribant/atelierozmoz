@@ -13,9 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use DateTime;
 
 #[ORM\Entity(repositoryClass: TrainingRepository::class)]
-/**
- * @Vich\Uploadable()
- */
+#[Vich\Uploadable]
 class Training
 {
     #[ORM\Id]
@@ -44,18 +42,15 @@ class Training
     #[ORM\Column(length: 255)]
     private ?string $uid = null;
 
-     /**
-     * @Vich\UploadableField(mapping="training_image", fileNameProperty="imageName")
-     * @Assert\File(
-     *     maxSize="1M",
-     *     maxSizeMessage="La taille du fichier doit être inférieure à 1 Mb",
-     *     mimeTypes={"image/jpeg", "image/jpg", "image/png"},
-     *     mimeTypesMessage = "Fichiers .jpeg ou .png uniquement"
-     * )
-     * @var File|null
-     */
+    #[Vich\UploadableField(mapping: 'training_image', fileNameProperty: 'imageName')]
+    #[Assert\File(
+        maxSize: '1M',
+        maxSizeMessage: 'La taille du fichier doit être inférieure à 1 Mb',
+        mimeTypes: ['image/jpeg', 'image/jpg', 'image/png'],
+        mimeTypesMessage: 'Fichiers .jpeg ou .png uniquement',
+    )]
     #[Assert\NotBlank(message: 'Veuillez sélectionner une image d\'illustration')]
-    private $imageFile;
+    private ?File $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;

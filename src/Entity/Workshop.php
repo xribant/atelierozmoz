@@ -14,9 +14,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: WorkshopRepository::class)]
-/**
- * @Vich\Uploadable()
- */
+#[Vich\Uploadable]
 class Workshop
 {
     #[ORM\Id]
@@ -49,18 +47,15 @@ class Workshop
     #[ORM\OneToMany(mappedBy: 'workshop', targetEntity: Event::class, orphanRemoval: true)]
     private $events;
 
-    /**
-     * @Vich\UploadableField(mapping="workshop_image", fileNameProperty="imageName")
-     * @Assert\File(
-     *     maxSize="1M",
-     *     maxSizeMessage="La taille du fichier doit être inférieure à 1 Mb",
-     *     mimeTypes={"image/jpeg", "image/jpg", "image/png"},
-     *     mimeTypesMessage = "Fichiers .jpeg ou .png uniquement"
-     * )
-     * @var File|null
-     */
+    #[Vich\UploadableField(mapping: 'workshop_image', fileNameProperty: 'imageName')]
+    #[Assert\File(
+        maxSize: '1M',
+        maxSizeMessage: 'La taille du fichier doit être inférieure à 1 Mb',
+        mimeTypes: ['image/jpeg', 'image/jpg', 'image/png'],
+        mimeTypesMessage: 'Fichiers .jpeg ou .png uniquement',
+    )]
     #[Assert\NotBlank(message: 'Veuillez sélectionner une image d\'illustration')]
-    private $imageFile;
+    private ?File $imageFile = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $imageName;
