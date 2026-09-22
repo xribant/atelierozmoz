@@ -1,0 +1,21 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Nouvel atelier en école{% endblock %}
+
+{% block pageTitle %}Créer un atelier en école{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <div class="card">
+
+                {{ include('admin/school_workshop/_form.html.twig') }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
